@@ -21,12 +21,11 @@
     color: inherit;
     border-radius: 40px;
     border: none;
-}
 
-.constructor:hover {
-    cursor: pointer;
+    &:hover {
+        cursor: pointer;
+    }
 }
-
 
 .tape {
     composes: constructor;

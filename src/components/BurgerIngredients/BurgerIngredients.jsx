@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./BurgerIngredients.scss";
+import styles from "./BurgerIngredients.module.scss";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from 'prop-types';
 import Ingredient from "../Ingredient/Ingredient";
@@ -29,9 +29,9 @@ const BurgerIngredients = (props) => {
   };
 
   return (
-    <section className="main">
+    <section className={styles.main}>
       <p className="text text_type_main-large">Соберите бургер</p>
-      <div className="tab">
+      <div className={styles.tab}>
         {tabs.map((tab) => {
           return (
             <Tab
@@ -45,18 +45,18 @@ const BurgerIngredients = (props) => {
           );
         })}
       </div>
-      <div className="scrollable">
+      <div className={styles.scrollable}>
         {tabs.map((tab) => (
-          <ul key={tab.label} className="list mt-2">
-            <li className="list-item">
+          <ul key={tab.label} className={`${styles.list} mt-2`}>
+            <li className={styles.item}>
               <p id={`${tab.value}`} className="text text_type_main-medium">
                 {tab.label}
               </p>
             </li>
 
-            <ul className="list p-2">
+            <ul className={`${styles.list} p-2`}>
               {data.map((item) => item.type === tab.value && (
-                    <li key={item._id} className="list-item">
+                    <li key={item._id} className={styles.item}>
                       <Ingredient
                         image={item.image}
                         name={item.name}
@@ -74,7 +74,18 @@ const BurgerIngredients = (props) => {
 };
 
 BurgerIngredients.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object)
+  data: PropTypes.arrayOf(PropTypes.shape({
+    colories: PropTypes.number,
+    carbohydrates: PropTypes.number,
+    fat: PropTypes.number,
+    image: PropTypes.string.isRequired,
+    image_large: PropTypes.string,
+    image_mobile: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    proteins: PropTypes.number,
+    type: PropTypes.string,
+  }))
 }
 
 export default BurgerIngredients;

@@ -1,4 +1,4 @@
-.constructor {
+.main {
   max-width: 600px;
   width: 100%;
   margin: 100px 0 0 40px;
@@ -29,8 +29,10 @@
   margin-right: 13px;
 }
 
-.edge-element {
+.edgeElement {
   margin-left: 37px;
+  max-width: 526px;
+  width: 100%;
 
   &:hover {
     cursor: pointer;
@@ -40,6 +42,8 @@
 .element {
   display: flex;
   align-items: center;
+  max-width: 563px;
+  width: 100%;
 
   &:hover {
     cursor: pointer;
