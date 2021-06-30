@@ -1,0 +1,51 @@
+.main {
+  max-width: 600px;
+  width: 100%;
+  margin: 100px 0 0 40px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 580px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #2F2F37;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #8585AD;
+    outline: 1px solid #8585AD;
+  }
+}
+
+.icon {
+  margin-right: 13px;
+}
+
+.edgeElement {
+  margin-left: 37px;
+  max-width: 526px;
+  width: 100%;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.element {
+  display: flex;
+  align-items: center;
+  max-width: 563px;
+  width: 100%;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

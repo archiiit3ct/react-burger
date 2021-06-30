@@ -1,0 +1,45 @@
+.header {
+    max-width: 1920px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 88px;
+}
+
+.menu {
+    display: flex;
+    margin-right: 112px;
+}
+
+.constructor {
+    display: flex;
+    align-items: center;
+    height: 56px;
+    padding: 0 20px;
+    background: inherit;
+    color: inherit;
+    border-radius: 40px;
+    border: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.tape {
+    composes: constructor;
+}
+
+.personal {
+    composes: constructor;
+    margin-left: 288px;
+}
+
+.title {
+    margin-left: 9px;
+}
+
+.logo {
+    margin: 0 288px 0 112px;
+}
