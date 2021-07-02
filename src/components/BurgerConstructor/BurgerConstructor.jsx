@@ -6,8 +6,7 @@ import {
 import TotalPrice from "../TotalPrice/TotalPrice";
 import PropTypes from 'prop-types';
 
-const BurgerConstructor = (props) => {
-  const { data } = props;
+const BurgerConstructor = ({ data, openModal }) => {
   return (
     <section className={styles.main}>
       <div className={styles.container}>
@@ -21,7 +20,7 @@ const BurgerConstructor = (props) => {
           />
         </section>
         { data.map((item) => {
-          if(item.type === 'bun' || item.name === 'Соус Spicy-X') return null;
+          if(item.type === 'bun') return null;
 
           return (
             <section className={styles.element} key={item._id}>
@@ -49,7 +48,7 @@ const BurgerConstructor = (props) => {
         </section>
       </div>
 
-      <TotalPrice total={610}/>
+      <TotalPrice total={610} openModal={openModal} />
     </section>
   );
 };
@@ -70,68 +69,3 @@ BurgerConstructor.propTypes = {
 }
 
 export default BurgerConstructor;
-
-// || item.name === 'Соус Spicy-X'
-
-/* 
-<section className={styles.element}>
-          <section className={styles.icon}>
-            <DragIcon type="primary" />
-          </section>
-          <ConstructorElement
-            text="Краторная булка N-200i (верх)"
-            price={50}
-            thumbnail={data[1].image}
-          />
-        </section>
-        <section className={styles.element}>
-          <section className={styles.icon}>
-            <DragIcon type="primary" />
-          </section>
-          <ConstructorElement
-            text="Краторная булка N-200i (верх)"
-            price={50}
-            thumbnail={data[1].image}
-          />
-        </section>
-        <section className={styles.element}>
-          <section className={styles.icon}>
-            <DragIcon type="primary" />
-          </section>
-          <ConstructorElement
-            text="Краторная булка N-200i (верх)"
-            price={50}
-            thumbnail={data[1].image}
-          />
-        </section>
-        <section className={styles.element}>
-          <section className={styles.icon}>
-            <DragIcon type="primary" />
-          </section>
-          <ConstructorElement
-            text="Краторная булка N-200i (верх)"
-            price={50}
-            thumbnail={data[1].image}
-          />
-        </section>
-        <section className={styles.element}>
-          <section className={styles.icon}>
-            <DragIcon type="primary" />
-          </section>
-          <ConstructorElement
-            text="Краторная булка N-200i (верх)"
-            price={50}
-            thumbnail={data[1].image}
-          />
-        </section>
-        <section className={styles.element}>
-          <section className={styles.icon}>
-            <DragIcon type="primary" />
-          </section>
-          <ConstructorElement
-            text="Краторная булка N-200i (верх)"
-            price={50}
-            thumbnail={data[1].image}
-          />
-        </section>
-*/
