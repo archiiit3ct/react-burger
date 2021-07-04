@@ -4,36 +4,36 @@ import AppHeader from "../AppHeader/AppHeader";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import BurgerIngredients from "../BurgerIngredients/BurgerIngredients";
 import Modal from '../Modal/Modal';
+import OrderDetails from '../OrderDetails/OrderDetails';
+import IngredientDetails from '../IngredientDetails/IngredientDetails';
 
 const API = "https://norma.nomoreparties.space/api/ingredients";
 
 function App() {
   const [state, setState] = useState({
-    productData: null,
+    productData: [],
     success: false,
   });
   const [showModal, setShowModal] = useState(false);
-  const [modalMode, setModalMode] = useState({});
+  const [modalContent, setModalContent] = useState({});
 
   const openModal = ( content: object ) => {
+      console.log(content);
       setShowModal(true);
-      setModalMode(content);
+      setModalContent(content);
   }
 
   const closeModal = () => {
       setShowModal(false)
   }
 
-  const handleKeyDown = (e: any) => {
-      if (e.keyCode === 27) {
-          setShowModal(false);
-      }
-  }
-
   useEffect(() => {
     const getData = async () => {
       fetch(API)
-        .then((res) => res.json())
+        .then((res) => {
+            if(res.ok) return res.json();
+            return Promise.reject(`Ошибка ${res.status}`)
+        })
         .then((data) => setState({ ...state, productData: data.data, success: data.success }))
         .catch((e) => {
           console.error(e);
@@ -56,7 +56,9 @@ function App() {
         )}
       </main>
         { showModal && (
-            <Modal onClose={closeModal} modalMode={modalMode} handleKeyDown={handleKeyDown}/>
+            <Modal onClose={closeModal}>
+
+            </Modal>
         )}
     </div>
   );
