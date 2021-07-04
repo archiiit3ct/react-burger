@@ -3,26 +3,24 @@ import { createPortal } from 'react-dom';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import styles from './Modal.module.scss';
 import ModalOverlay from '../ModalOverlay/ModalOverlay';
-import OrderDetails from '../OrderDetails/OrderDetails';
-import IngredientDetails from '../IngredientDetails/IngredientDetails';
 
 import PropTypes from 'prop-types';
 
 const modalRoot = document.getElementById('modal');
 
-const Modal = ({ onClose, handleKeyDown, modalMode }) => {
+const Modal = ({ onClose, children, header }) => {
   return createPortal(
     (
       <>
-        <ModalOverlay onClose={onClose} onKeyDown={handleKeyDown}/>
+        <ModalOverlay onClose={onClose} />
         <div className={styles.modal}>
           <section className={`${styles.header} text text_type_main-large`}>
-            { modalMode.header ? modalMode.header : null }
+            { header ? header : null }
             <section className={styles.closeButton}>
               <CloseIcon type="primary" onClick={onClose} />
             </section>
           </section>
-          { modalMode.mode === 'order' ? <OrderDetails order={modalMode.order.id} /> : <IngredientDetails ingredient={modalMode.ingredient} /> }
+          { children }
         </div>,
       </>
     ),
@@ -32,8 +30,8 @@ const Modal = ({ onClose, handleKeyDown, modalMode }) => {
 
 Modal.propTypes = {
   onClose: PropTypes.func.isRequired,
-  handleKeyDown: PropTypes.func.isRequired,
-  content: PropTypes.object
+  header: PropTypes.string,
+  children: PropTypes.node.isRequired
 }
 
 export default Modal;

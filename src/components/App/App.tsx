@@ -17,10 +17,21 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState({});
 
-  const openModal = ( content: object ) => {
-      console.log(content);
+  const openModal = ( content: any ) => {
       setShowModal(true);
-      setModalContent(content);
+      if(content.mode === 'order') {
+        setModalContent(
+            <Modal onClose={closeModal} >
+              <OrderDetails order={content.order.id} />
+            </Modal>
+        )
+      } else {
+        setModalContent(
+            <Modal onClose={closeModal} header={content.header}>
+              <IngredientDetails ingredient={content.ingredient} />
+            </Modal>
+        )
+      }
   }
 
   const closeModal = () => {
@@ -44,7 +55,7 @@ function App() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return (
+    return (
     <div className="App">
       <AppHeader />
       <main className={styles.main}>
@@ -55,11 +66,7 @@ function App() {
           </>
         )}
       </main>
-        { showModal && (
-            <Modal onClose={closeModal}>
-
-            </Modal>
-        )}
+        { showModal && ( modalContent )}
     </div>
   );
 }

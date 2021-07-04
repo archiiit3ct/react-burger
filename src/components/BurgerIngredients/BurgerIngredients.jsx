@@ -85,7 +85,7 @@ BurgerIngredients.propTypes = {
     price: PropTypes.number.isRequired,
     proteins: PropTypes.number,
     type: PropTypes.string,
-  })),
+  }).isRequired),
   openModal: PropTypes.func.isRequired
 }
 

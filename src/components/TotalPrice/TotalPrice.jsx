@@ -26,7 +26,7 @@ const TotalPrice = (props) => {
 };
 
 TotalPrice.propTypes = {
-  total: PropTypes.number,
+  total: PropTypes.number.isRequired,
 }
 
 export default TotalPrice;

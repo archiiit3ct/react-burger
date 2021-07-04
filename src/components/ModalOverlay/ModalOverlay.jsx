@@ -3,13 +3,20 @@ import styles from './ModalOverlay.module.scss';
 
 import PropTypes from 'prop-types';
 
-const ModalOverlay = ({ onClose, onKeyDown }) => {
+const ModalOverlay = ({ onClose }) => {
+
   useEffect(() => {
-    document.addEventListener('keydown', onKeyDown);
+    document.addEventListener('keydown', handleKeyDown);
     return () => {
-      document.removeEventListener('keydown', onKeyDown);
+      document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [onKeyDown]);
+  }, );
+
+  const handleKeyDown = (e) => {
+    if (e.code === 'Escape') {
+      onClose();
+    }
+  }
 
   return (
     <div className={styles.modalOverlay} onClick={onClose} />
@@ -18,7 +25,6 @@ const ModalOverlay = ({ onClose, onKeyDown }) => {
 
 ModalOverlay.propTypes = {
   onClose: PropTypes.func.isRequired,
-  onKeyDown: PropTypes.func.isRequired
 }
 
 export default ModalOverlay;

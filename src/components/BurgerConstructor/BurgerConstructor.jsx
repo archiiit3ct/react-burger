@@ -9,16 +9,16 @@ import PropTypes from 'prop-types';
 const BurgerConstructor = ({ data, openModal }) => {
   return (
     <section className={styles.main}>
+      <section className={styles.edgeElement}>
+        <ConstructorElement
+          type="top"
+          isLocked={true}
+          text={data[0].name + ' (верх)'}
+          price={data[0].price}
+          thumbnail={data[0].image}
+        />
+      </section>
       <div className={styles.container}>
-        <section className={styles.edgeElement}>
-          <ConstructorElement
-            type="top"
-            isLocked={true}
-            text={data[0].name + ' (верх)'}
-            price={200}
-            thumbnail={data[0].image}
-          />
-        </section>
         { data.map((item) => {
           if(item.type === 'bun') return null;
 
@@ -36,17 +36,16 @@ const BurgerConstructor = ({ data, openModal }) => {
             </section>
           )
         })}
-        
-        <section className={styles.edgeElement}>
-          <ConstructorElement
-            type="bottom"
-            isLocked={true}
-            text="Краторная булка N-200i (верх)"
-            price={200}
-            thumbnail={data[data.length - 1].image}
-          />
-        </section>
       </div>
+      <section className={styles.edgeElement}>
+        <ConstructorElement
+          type="bottom"
+          isLocked={true}
+          text={data[0].name + ' (верх)'}
+          price={data[0].price}
+          thumbnail={data[0].image}
+        />
+      </section>
 
       <TotalPrice total={610} openModal={openModal} />
     </section>
@@ -65,7 +64,7 @@ BurgerConstructor.propTypes = {
     price: PropTypes.number.isRequired,
     proteins: PropTypes.number,
     type: PropTypes.string,
-  }))
+  }).isRequired)
 }
 
 export default BurgerConstructor;
