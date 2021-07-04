@@ -1,35 +1,36 @@
-import { useState } from 'react';
+import React from 'react';
 import styles from './Ingredient.module.scss';
-import { Counter } from "@ya.praktikum/react-developer-burger-ui-components";
 import Price from '../Price/Price';
 import PropTypes from 'prop-types';
 
-const Ingredient = (props) => {
-  let [counter, setCounter] = useState(0)
-
-  const { image, name, price } = props;
-
-  const handleClick = () => {
-    setCounter(counter + 1);
-  };
+const Ingredient = ({ item, openModal }) => {
 
   return (
-    <div className={`${styles.ingredient} mb-2`} onClick={handleClick}>
-      <div className={styles.ingredientIcon}>
-        {counter > 0 && <Counter count={counter} size="default" />}
-      </div>
-
-      <img src={image} alt={name} />
-      <Price price={price} />
-      <p className={`${styles.name} text text_type_main-default`}>{name}</p>
+    <div
+      className={`${styles.ingredient} mb-2`}
+      onClick={() => openModal(
+        {mode: 'ingredient', header: 'Детали ингредиента', ingredient: item })} >
+      <img src={item.image} alt={item.name} />
+      <Price price={item.price} />
+      <p className={`${styles.name} text text_type_main-default`}>{item.name}</p>
     </div>
   );
 };
 
 Ingredient.propTypes = {
-  image: PropTypes.string,
-  name: PropTypes.string,
-  price: PropTypes.number
+  item: PropTypes.shape({
+    colories: PropTypes.number,
+    carbohydrates: PropTypes.number,
+    fat: PropTypes.number,
+    image: PropTypes.string.isRequired,
+    image_large: PropTypes.string,
+    image_mobile: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    proteins: PropTypes.number,
+    type: PropTypes.string,
+  }).isRequired,
+  openModal: PropTypes.func.isRequired
 }
 
 export default Ingredient;

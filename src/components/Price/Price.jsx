@@ -13,7 +13,7 @@ const Price = (props) => {
 };
 
 Price.propTypes = {
-  price: PropTypes.number
+  price: PropTypes.number.isRequired
 }
 
 export default Price;

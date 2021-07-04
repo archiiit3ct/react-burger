@@ -8,8 +8,9 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  height: 580px;
+  height: 350px;
   overflow-y: auto;
+  margin: 10px 0;
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -30,9 +31,8 @@
 }
 
 .edgeElement {
+  max-width: 516px;
   margin-left: 37px;
-  max-width: 526px;
-  width: 100%;
 
   &:hover {
     cursor: pointer;

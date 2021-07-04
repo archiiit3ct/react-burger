@@ -6,22 +6,21 @@ import {
 import TotalPrice from "../TotalPrice/TotalPrice";
 import PropTypes from 'prop-types';
 
-const BurgerConstructor = (props) => {
-  const { data } = props;
+const BurgerConstructor = ({ data, openModal }) => {
   return (
     <section className={styles.main}>
+      <section className={styles.edgeElement}>
+        <ConstructorElement
+          type="top"
+          isLocked={true}
+          text={data[0].name + ' (верх)'}
+          price={data[0].price}
+          thumbnail={data[0].image}
+        />
+      </section>
       <div className={styles.container}>
-        <section className={styles.edgeElement}>
-          <ConstructorElement
-            type="top"
-            isLocked={true}
-            text={data[0].name + ' (верх)'}
-            price={200}
-            thumbnail={data[0].image}
-          />
-        </section>
         { data.map((item) => {
-          if(item.type === 'bun' || item.name === 'Соус Spicy-X') return null;
+          if(item.type === 'bun') return null;
 
           return (
             <section className={styles.element} key={item._id}>
@@ -37,19 +36,18 @@ const BurgerConstructor = (props) => {
             </section>
           )
         })}
-        
-        <section className={styles.edgeElement}>
-          <ConstructorElement
-            type="bottom"
-            isLocked={true}
-            text="Краторная булка N-200i (верх)"
-            price={200}
-            thumbnail={data[data.length - 1].image}
-          />
-        </section>
       </div>
+      <section className={styles.edgeElement}>
+        <ConstructorElement
+          type="bottom"
+          isLocked={true}
+          text={data[0].name + ' (верх)'}
+          price={data[0].price}
+          thumbnail={data[0].image}
+        />
+      </section>
 
-      <TotalPrice total={610}/>
+      <TotalPrice total={610} openModal={openModal} />
     </section>
   );
 };
@@ -66,72 +64,7 @@ BurgerConstructor.propTypes = {
     price: PropTypes.number.isRequired,
     proteins: PropTypes.number,
     type: PropTypes.string,
-  }))
+  }).isRequired)
 }
 
 export default BurgerConstructor;
-
-// || item.name === 'Соус Spicy-X'
-
-/* 
-<section className={styles.element}>
-          <section className={styles.icon}>
-            <DragIcon type="primary" />
-          </section>
-          <ConstructorElement
-            text="Краторная булка N-200i (верх)"
-            price={50}
-            thumbnail={data[1].image}
-          />
-        </section>
-        <section className={styles.element}>
-          <section className={styles.icon}>
-            <DragIcon type="primary" />
-          </section>
-          <ConstructorElement
-            text="Краторная булка N-200i (верх)"
-            price={50}
-            thumbnail={data[1].image}
-          />
-        </section>
-        <section className={styles.element}>
-          <section className={styles.icon}>
-            <DragIcon type="primary" />
-          </section>
-          <ConstructorElement
-            text="Краторная булка N-200i (верх)"
-            price={50}
-            thumbnail={data[1].image}
-          />
-        </section>
-        <section className={styles.element}>
-          <section className={styles.icon}>
-            <DragIcon type="primary" />
-          </section>
-          <ConstructorElement
-            text="Краторная булка N-200i (верх)"
-            price={50}
-            thumbnail={data[1].image}
-          />
-        </section>
-        <section className={styles.element}>
-          <section className={styles.icon}>
-            <DragIcon type="primary" />
-          </section>
-          <ConstructorElement
-            text="Краторная булка N-200i (верх)"
-            price={50}
-            thumbnail={data[1].image}
-          />
-        </section>
-        <section className={styles.element}>
-          <section className={styles.icon}>
-            <DragIcon type="primary" />
-          </section>
-          <ConstructorElement
-            text="Краторная булка N-200i (верх)"
-            price={50}
-            thumbnail={data[1].image}
-          />
-        </section>
-*/

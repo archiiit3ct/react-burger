@@ -20,7 +20,7 @@ const tabs = [
 ];
 
 const BurgerIngredients = (props) => {
-  const { data } = props;
+  const { data, openModal } = props;
   const [current, setCurrent] = useState("bun");
 
   const handleTabClick = (item) => {
@@ -56,11 +56,11 @@ const BurgerIngredients = (props) => {
 
             <ul className={`${styles.list} p-2`}>
               {data.map((item) => item.type === tab.value && (
+
                     <li key={item._id} className={styles.item}>
                       <Ingredient
-                        image={item.image}
-                        name={item.name}
-                        price={item.price}
+                        item={item}
+                        openModal={openModal}
                       />
                     </li>
                   )
@@ -85,7 +85,8 @@ BurgerIngredients.propTypes = {
     price: PropTypes.number.isRequired,
     proteins: PropTypes.number,
     type: PropTypes.string,
-  }))
+  }).isRequired),
+  openModal: PropTypes.func.isRequired
 }
 
 export default BurgerIngredients;
