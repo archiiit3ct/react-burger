@@ -7,6 +7,8 @@ import Modal from '../Modal/Modal';
 import OrderDetails from '../OrderDetails/OrderDetails';
 import IngredientDetails from '../IngredientDetails/IngredientDetails';
 
+import { ConstructorContext } from "../../services/constructorContext";
+
 const API = "https://norma.nomoreparties.space/api/ingredients";
 
 function App() {
@@ -62,7 +64,9 @@ function App() {
         {state.success && (
           <>
             <BurgerIngredients data={state.productData} openModal={openModal}/>
-            <BurgerConstructor data={state.productData} openModal={openModal} />
+            <ConstructorContext.Provider value={{state.productData}}>
+              <BurgerConstructor data={state.productData} openModal={openModal} />
+            </ConstructorContext.Provider>
           </>
         )}
       </main>
