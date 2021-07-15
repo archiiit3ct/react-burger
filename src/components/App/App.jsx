@@ -28,7 +28,7 @@ function reducer(state, action) {
     case "delete":
       return state.product.filter(item => item !== action.payload);
     default:
-      throw new Error(`Wrong type of action: ${action.type}`);
+      return state;
   }
 }
 
@@ -52,6 +52,7 @@ function App() {
   }
 
   const getOrder = () => {
+    if(productState.bun.length === 0) return null;
     const product = productState.product.map((item) => { return item._id })
     const multiBun = productState.bun.concat(productState.bun)
     const bun = multiBun.map((item) => { return item._id})
