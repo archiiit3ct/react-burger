@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './IngredientDetails.module.scss';
 import PropTypes from 'prop-types';
+import { Button } from '@ya.praktikum/react-developer-burger-ui-components'
+import { IngredientContext } from "../../services/constructorContext";
 
-const IngredientDetails = ({ ingredient }) => {
+
+const IngredientDetails = ({ ingredient, onClose }) => {
+  const { productDispatcher, getTotalPrice } = useContext(IngredientContext);
+
   return (
     <div className={styles.ingredient}>
       <img src={ingredient.image_large} alt='Ingredient' />
@@ -33,6 +38,13 @@ const IngredientDetails = ({ ingredient }) => {
           </p>
         </section>
       </div>
+      <Button type="primary" size="medium" onClick={() => {
+        productDispatcher({type: 'add', payload: ingredient});
+        getTotalPrice(ingredient.type, ingredient.price);
+        onClose();
+      }}>
+        Добавить
+      </Button>
     </div>
   );
 };

@@ -56,7 +56,6 @@ const BurgerIngredients = (props) => {
 
             <ul className={`${styles.list} p-2`}>
               {data.map((item) => item.type === tab.value && (
-
                     <li key={item._id} className={styles.item}>
                       <Ingredient
                         item={item}

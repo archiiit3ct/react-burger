@@ -5,25 +5,32 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import TotalPrice from "../TotalPrice/TotalPrice";
 import PropTypes from 'prop-types';
+import { ConstructorContext } from "../../services/constructorContext";
+import {useContext} from "react";
 
-const BurgerConstructor = ({ data, openModal }) => {
+const BurgerConstructor = () => {
+
+  const { productState } = useContext(ConstructorContext)
+
   return (
     <section className={styles.main}>
-      <section className={styles.edgeElement}>
-        <ConstructorElement
-          type="top"
-          isLocked={true}
-          text={data[0].name + ' (верх)'}
-          price={data[0].price}
-          thumbnail={data[0].image}
-        />
-      </section>
-      <div className={styles.container}>
-        { data.map((item) => {
-          if(item.type === 'bun') return null;
+      { productState.bun.length !== 0 && (
+        <section className={styles.edgeElement}>
+          <ConstructorElement
+            type="top"
+            isLocked={true}
+            text={productState.bun[0].name + ' (верх)'}
+            price={productState.bun[0].price}
+            thumbnail={productState.bun[0].image}
+          />
+        </section>
+      )}
 
+      <div className={styles.container}>
+        { productState.product.map((item) => {
+          if(item.type === 'bun') return null;
           return (
-            <section className={styles.element} key={item._id}>
+            <section className={styles.element} key={item._id + Math.random()}>
               <section className={styles.icon}>
                 <DragIcon type="primary" />
               </section>
@@ -37,17 +44,20 @@ const BurgerConstructor = ({ data, openModal }) => {
           )
         })}
       </div>
-      <section className={styles.edgeElement}>
-        <ConstructorElement
-          type="bottom"
-          isLocked={true}
-          text={data[0].name + ' (верх)'}
-          price={data[0].price}
-          thumbnail={data[0].image}
-        />
-      </section>
+      
+      { productState.bun.length !== 0 && (
+        <section className={styles.edgeElement}>
+          <ConstructorElement
+            type="bottom"
+            isLocked={true}
+            text={productState.bun[0].name + ' (верх)'}
+            price={productState.bun[0].price}
+            thumbnail={productState.bun[0].image}
+          />
+        </section>
+      )}
 
-      <TotalPrice total={610} openModal={openModal} />
+      {(productState.product.length !== 0 || productState.bun.length !== 0) && (<TotalPrice />)}
     </section>
   );
 };
