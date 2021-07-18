@@ -7,7 +7,7 @@ export const CLOSE_ORDER = 'CLOSE_ORDER';
 
 const ORDER_API = "https://norma.nomoreparties.space/api/orders";
 
-export const addIngredientToCart = (ingredientID) => {
+export const addIngredientConstructor = (ingredient) => {
   return (dispatch, getState) => {
     const getIngredientKey = (ingredients) => {
       const maxAvailableIndex = ingredients.reduce((res, item) => {
@@ -30,10 +30,9 @@ export const addIngredientToCart = (ingredientID) => {
     };
 
     const prevCart = getState().order;
-    console.log(prevCart)
     const newIngredient = {
-      ...getState().ingredients.items.filter(
-        (item) => item._id === ingredientID
+      ...getState().ingredients.ingredients.filter(
+        (item) => item._id === ingredient
       )[0],
     };
 
@@ -47,7 +46,7 @@ export const addIngredientToCart = (ingredientID) => {
   };
 };
 
-export const removeIngredientFromCart = (ingredientKey) => {
+export const removeIngredientConstructor = (ingredientKey) => {
   return (dispatch, getState) => {
     const prevCart = getState().order;
     const removedIngredientIndex = prevCart.fillings.findIndex(

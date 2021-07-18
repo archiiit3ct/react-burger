@@ -1,0 +1,14 @@
+.element {
+  display: flex;
+  align-items: center;
+  max-width: 563px;
+  width: 100%;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.icon {
+  margin-right: 13px;
+}
