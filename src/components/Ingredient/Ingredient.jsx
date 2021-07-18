@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { useDrag } from "react-dnd";
 import { useDispatch } from "react-redux";
 import { addIngredientConstructor } from "../../services/actions/order";
-import { Button }  from '@ya.praktikum/react-developer-burger-ui-components';
 
 const Ingredient = ({ item, openModal }) => {
   const dispatch = useDispatch();
@@ -29,7 +28,7 @@ const Ingredient = ({ item, openModal }) => {
       <img src={item.image} alt={item.name} />
       <Price price={item.price} />
       <p className={`${styles.name} text text_type_main-default`}>{item.name}</p>
-      <div className={styles.add_btn}><Button type="secondary" size="medium" onClick={addIngredient}>Добавить</Button></div>
+      <div className={styles.fake} onClick={addIngredient}></div>
     </div>
   );
 };
