@@ -26,19 +26,15 @@ const BurgerIngredients = () => {
   const { ingredients, ingredientsSuccess, showIngredientModal } = useSelector(store => store.ingredients);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if(!ingredients.length) dispatch(getIngredients());
-  }, [dispatch]);
-
   const openModal = (ingredient) => {
     dispatch({type:  SET_MODAL_CONTENT, value: ingredient});
     dispatch({type:  OPEN_INGREDIENT_MODAL });
   }
 
-  const closeModal = (e) => {
-    e.stopPropagation();
-    dispatch({type:  SET_MODAL_CONTENT, value: null});
+  const closeModal = () => {
     dispatch({type:  CLOSE_INGREDIENT_MODAL })
+    dispatch({type:  SET_MODAL_CONTENT, value: null});
+
   }
 
   const [current, setCurrent] = useState("bun");

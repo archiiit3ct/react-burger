@@ -1,3 +1,5 @@
+import {ingredients} from "../reducers/ingredients";
+
 export const UPDATE_CART = 'UPDATE_CART';
 export const CLEAR_CART = 'CLEAR_CART';
 export const CREATE_NEW_ORDER_REQUEST = 'CREATE_NEW_ORDER_REQUEST';
@@ -64,11 +66,12 @@ export const removeIngredientConstructor = (ingredientKey) => {
 };
 
 export const createOrder = () => {
-  return (dispatch, getState) => {
-    dispatch({ type: CREATE_NEW_ORDER_REQUEST });
 
+  return (dispatch, getState) => {
     const prevCart = getState().order;
     const { bun, fillings } = { ...prevCart };
+    if(bun === null) return null;
+    dispatch({ type: CREATE_NEW_ORDER_REQUEST });
 
     fetch(ORDER_API, {
       method: "POST",

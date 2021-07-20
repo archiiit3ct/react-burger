@@ -8,7 +8,7 @@ import OrderDetails from "../OrderDetails/OrderDetails";
 
 const TotalPrice = () => {
   const dispatch = useDispatch();
-  const {bun, fillings, showOrderDetails} = useSelector(store => store.order)
+  const  {bun, fillings, showOrderDetails } = useSelector(store => store.order)
 
   const getOrder = () => {
     dispatch(createOrder())
