@@ -1,4 +1,4 @@
-import { getCookie } from './utils';
+import {getCookie} from './utils';
 
 export const deserializeQuery = (query, noQuestionMark = false) => {
 	const pairs = (noQuestionMark ? query : query.substring(1)).split('&');
@@ -29,7 +29,7 @@ export const getCountriesRequest = async () =>
 		referrerPolicy: 'no-referrer'
 	})
 		.then(res => res.json())
-		.then(({ countries }) => countries);
+		.then(({countries}) => countries);
 
 export const getLaureatesRequest = async () =>
 	await fetch('https://cosmic.nomoreparties.space/api/laureates', {
@@ -45,7 +45,7 @@ export const getLaureatesRequest = async () =>
 		referrerPolicy: 'no-referrer'
 	})
 		.then(res => res.json())
-		.then(({ laureates }) => laureates);
+		.then(({laureates}) => laureates);
 
 export const loginRequest = async form => {
 	return await fetch('https://cosmic.nomoreparties.space/login', {

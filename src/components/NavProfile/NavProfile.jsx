@@ -14,7 +14,7 @@ const NavProfile = () => {
 		dispatch(userLogout(refreshToken));
 	};
 
-	if(!user) {
+	if (!user) {
 		history.replace({pathname: '/login'});
 	}
 
@@ -34,8 +34,10 @@ const NavProfile = () => {
 			<div
 				className={`${styles.item} text text_type_main-medium`}
 				onClick={logoutProfile}
-			>Выход</div>
-			<p className={`${styles.desc} text text_type_main-default mt-20`}>В этом разделе вы можете изменить свои персональные данные</p>
+			>Выход
+			</div>
+			<p className={`${styles.desc} text text_type_main-default mt-20`}>В этом разделе вы можете изменить свои
+				персональные данные</p>
 		</div>
 	);
 };

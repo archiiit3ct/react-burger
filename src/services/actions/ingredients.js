@@ -9,30 +9,30 @@ export const SET_INGREDIENT_PAGE = 'SET_INGREDIENT_PAGE';
 const API = 'https://norma.nomoreparties.space/api/ingredients';
 
 export function getIngredients() {
-  return function (dispatch) {
-    dispatch({
-      type: GET_INGREDIENTS_REQUEST
-    });
+	return function (dispatch) {
+		dispatch({
+			type: GET_INGREDIENTS_REQUEST
+		});
 
-    fetch(API)
-      .then((res) => {
-        if (res.ok) return res.json();
-        dispatch({
-          type: GET_INGREDIENTS_FAILED,
-          value: `Ошибка ${res.status}`
-        })
-      })
-      .then((data) => {
-        dispatch({
-          type: GET_INGREDIENTS_SUCCESS,
-          items: data.data
-        });
-      })
-      .catch((e) => {
-        dispatch({
-          type: GET_INGREDIENTS_FAILED,
-          value: `Ошибка ${e}`
-        })
-      });
-  };
+		fetch(API)
+			.then((res) => {
+				if (res.ok) return res.json();
+				dispatch({
+					type: GET_INGREDIENTS_FAILED,
+					value: `Ошибка ${res.status}`
+				})
+			})
+			.then((data) => {
+				dispatch({
+					type: GET_INGREDIENTS_SUCCESS,
+					items: data.data
+				});
+			})
+			.catch((e) => {
+				dispatch({
+					type: GET_INGREDIENTS_FAILED,
+					value: `Ошибка ${e}`
+				})
+			});
+	};
 }

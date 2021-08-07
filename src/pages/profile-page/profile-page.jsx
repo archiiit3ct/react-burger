@@ -24,27 +24,27 @@ const ProfilePage = () => {
 	return (
 		<div className={styles.profile}>
 			<div className="pt-30">
-				<form  onSubmit={handleUpdateUserInfo} className={styles.form}>
+				<form onSubmit={handleUpdateUserInfo} className={styles.form}>
 					<div className="mb-6">
 						<Input
 							type="text"
 							placeholder="Имя"
 							value={name}
-							onChange={e => dispatch({ type: SET_NAME, payload: e.target.value })}
+							onChange={e => dispatch({type: SET_NAME, payload: e.target.value})}
 						/>
 					</div>
 					<div className="mb-6">
 						<EmailInput
 							value={email}
 							name={'email'}
-							onChange={e => dispatch({ type: SET_EMAIL, payload: e.target.value })}
+							onChange={e => dispatch({type: SET_EMAIL, payload: e.target.value})}
 						/>
 					</div>
 					<div className="mb-6">
 						<PasswordInput
 							value={password}
 							name={'password'}
-							onChange={e => dispatch({ type: SET_PASSWORD, payload: e.target.value })}
+							onChange={e => dispatch({type: SET_PASSWORD, payload: e.target.value})}
 						/>
 					</div>
 					<div className={styles.buttons}>

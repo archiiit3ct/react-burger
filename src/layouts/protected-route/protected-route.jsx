@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import { getUserInfo } from '../../services/actions';
-import { useDispatch, useSelector } from 'react-redux';
+import React, {useEffect, useState} from 'react';
+import {Redirect, Route} from 'react-router-dom';
+import {getUserInfo} from '../../services/actions';
+import {useDispatch, useSelector} from 'react-redux';
 
-export function ProtectedRoute({ children, ...rest }) {
+export function ProtectedRoute({children, ...rest}) {
 	const dispatch = useDispatch();
 	const user = useSelector(store => store.user.user)
 
@@ -23,6 +23,6 @@ export function ProtectedRoute({ children, ...rest }) {
 	}
 
 	return (
-		<Route {...rest} render={() => user ? (children) : (<Redirect to='/login'/>)} />
+		<Route {...rest} render={() => user ? (children) : (<Redirect to='/login'/>)}/>
 	);
 }

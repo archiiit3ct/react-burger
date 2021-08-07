@@ -4,12 +4,12 @@ import {useSelector} from "react-redux";
 import styles from './ingredient-page.module.scss';
 
 const IngredientPage = () => {
-	const { id } = useParams();
-	const { ingredients } = useSelector(store => store.ingredients);
+	const {id} = useParams();
+	const {ingredients} = useSelector(store => store.ingredients);
 	const [ingredient, setIngredient] = useState(null);
 
 	useEffect(() => {
-		if(ingredients) {
+		if (ingredients) {
 			const ingredient = ingredients.find(item => item._id === id);
 			setIngredient(ingredient);
 		}
@@ -18,9 +18,9 @@ const IngredientPage = () => {
 	return (
 		<div className={styles.main}>
 			<h3 className={`${styles.title} text text_type_main-large`}>Детали ингредиента</h3>
-			{ ingredient && (
+			{ingredient && (
 				<div className={styles.container}>
-					<img src={ingredient.image_large} alt='Ingredient' />
+					<img src={ingredient.image_large} alt='Ingredient'/>
 					<p className={`text text_type_main-medium`}>{ingredient.name}</p>
 					<div className={styles.specification}>
 						<section className={styles.item}>

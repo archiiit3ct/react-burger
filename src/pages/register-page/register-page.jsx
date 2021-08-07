@@ -8,7 +8,7 @@ import {SET_EMAIL, SET_NAME, SET_PASSWORD, userRegister} from "../../services/ac
 const RegisterPage = () => {
 	const dispatch = useDispatch();
 
-	const { name, email, password } = useSelector(store => ({
+	const {name, email, password} = useSelector(store => ({
 		name: store.user.name,
 		email: store.user.email,
 		password: store.user.password,
@@ -28,21 +28,21 @@ const RegisterPage = () => {
 						type="text"
 						placeholder="Имя"
 						value={name}
-						onChange={e => dispatch({ type: SET_NAME, payload: e.target.value })}
+						onChange={e => dispatch({type: SET_NAME, payload: e.target.value})}
 					/>
 				</div>
 				<div className="mb-6">
 					<EmailInput
 						value={email}
 						name={'email'}
-						onChange={e => dispatch({ type: SET_EMAIL, payload: e.target.value })}
+						onChange={e => dispatch({type: SET_EMAIL, payload: e.target.value})}
 					/>
 				</div>
 				<div className="mb-6">
 					<PasswordInput
 						value={password}
 						name={'password'}
-						onChange={e => dispatch({ type: SET_PASSWORD, payload: e.target.value })}
+						onChange={e => dispatch({type: SET_PASSWORD, payload: e.target.value})}
 					/>
 				</div>
 				<Button>Зарегистрироваться</Button>

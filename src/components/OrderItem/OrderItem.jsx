@@ -1,5 +1,5 @@
 import React from 'react';
-import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import {CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
 
 import data from '../../utils/data';
 
@@ -19,19 +19,19 @@ const OrderItem = () => {
 			<div className={`${styles.footer} mt-6`}>
 				<div className={styles.ingredients}>
 					<div className={styles.ingredient}>
-						<img src={data[14].image} alt={data[0].name} />
+						<img src={data[14].image} alt={data[0].name}/>
 					</div>
 					<div className={styles.ingredient}>
-						<img src={data[4].image} alt={data[0].name} />
+						<img src={data[4].image} alt={data[0].name}/>
 					</div>
 					<div className={styles.ingredient}>
-						<img src={data[2].image} alt={data[0].name} />
+						<img src={data[2].image} alt={data[0].name}/>
 					</div>
 					<div className={styles.ingredient}>
-						<img src={data[10].image} alt={data[0].name} />
+						<img src={data[10].image} alt={data[0].name}/>
 					</div>
 					<div className={styles.ingredient}>
-						<img src={data[14].image} alt={data[0].name} />
+						<img src={data[14].image} alt={data[0].name}/>
 					</div>
 				</div>
 				<div className={`${styles.total}`}>

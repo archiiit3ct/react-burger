@@ -1,4 +1,4 @@
-import { setCookie, getCookie, deleteCookie } from "../utils";
+import {deleteCookie, getCookie, setCookie} from "../utils";
 
 export const SET_USER_REQUEST = "SET_USER_REQUEST";
 export const SET_USER_SUCCESS = "SET_USER_SUCCESS";
@@ -55,8 +55,8 @@ function updateUserInfoFetch(userObj) {
 }
 
 export function getUserInfo() {
-	return function(dispatch) {
-		dispatch({ type: SET_USER_REQUEST});
+	return function (dispatch) {
+		dispatch({type: SET_USER_REQUEST});
 		userInfoFetch().then(response => {
 			if (response.success) {
 				dispatch({
@@ -72,7 +72,7 @@ export function getUserInfo() {
 					payload: response.user.email
 				})
 			} else {
-				dispatch({ type: SET_USER_FAILED })
+				dispatch({type: SET_USER_FAILED})
 				if (response.message === 'jwt expired') {
 					updateAccessToken().then(data => {
 						if (data.success) {
@@ -109,8 +109,8 @@ export function getUserInfo() {
 }
 
 export function updateUserInfo(userObj) {
-	return function(dispatch) {
-		dispatch({ type: SET_USER_REQUEST});
+	return function (dispatch) {
+		dispatch({type: SET_USER_REQUEST});
 		updateUserInfoFetch(userObj).then(response => {
 			if (response.success) {
 				dispatch({
@@ -126,7 +126,7 @@ export function updateUserInfo(userObj) {
 					payload: response.user.email
 				})
 			} else {
-				dispatch({ type: SET_USER_FAILED })
+				dispatch({type: SET_USER_FAILED})
 				if (response.message === 'jwt expired') {
 					updateAccessToken().then(data => {
 						if (data.success) {
@@ -163,7 +163,7 @@ export function updateUserInfo(userObj) {
 }
 
 export function userRegister(name, email, password) {
-	return function(dispatch) {
+	return function (dispatch) {
 		dispatch({
 			type: SET_USER_REQUEST
 		});
@@ -191,9 +191,9 @@ export function userRegister(name, email, password) {
 					type: SET_USER_SUCCESS,
 					payload: response.user
 				})
-				dispatch({ type: RESET_EMAIL })
-				dispatch({ type: RESET_PASSWORD })
-				dispatch({ type: RESET_NAME })
+				dispatch({type: RESET_EMAIL})
+				dispatch({type: RESET_PASSWORD})
+				dispatch({type: RESET_NAME})
 
 				const accessToken = response.accessToken.split('Bearer ')[1];
 				const refreshToken = response.refreshToken;
@@ -212,7 +212,7 @@ export function userRegister(name, email, password) {
 }
 
 export function userLogin(email, password) {
-	return function(dispatch) {
+	return function (dispatch) {
 		dispatch({
 			type: SET_USER_REQUEST
 		});
@@ -239,8 +239,8 @@ export function userLogin(email, password) {
 					type: SET_USER_SUCCESS,
 					payload: response.user
 				})
-				dispatch({ type: RESET_EMAIL })
-				dispatch({ type: RESET_PASSWORD })
+				dispatch({type: RESET_EMAIL})
+				dispatch({type: RESET_PASSWORD})
 
 				dispatch({
 					type: SET_NAME,
@@ -268,7 +268,7 @@ export function userLogin(email, password) {
 }
 
 export function userLogout(token) {
-	return function(dispatch) {
+	return function (dispatch) {
 		dispatch({
 			type: SET_USER_REQUEST
 		});

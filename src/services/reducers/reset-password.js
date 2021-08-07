@@ -1,12 +1,12 @@
 import {
-	SEND_EMAIL_REQUEST,
-	SEND_EMAIL_SUCCESS,
-	SEND_EMAIL_FAILED,
+	RESET_EMAILCODE,
+	RESET_PASSWORD_FAILED,
 	RESET_PASSWORD_REQUEST,
 	RESET_PASSWORD_SUCCESS,
-	RESET_PASSWORD_FAILED,
-	SET_EMAILCODE,
-	RESET_EMAILCODE
+	SEND_EMAIL_FAILED,
+	SEND_EMAIL_REQUEST,
+	SEND_EMAIL_SUCCESS,
+	SET_EMAILCODE
 } from '../actions';
 
 const initialState = {
@@ -22,7 +22,7 @@ const initialState = {
 }
 
 export const resetPassword = (state = initialState, action) => {
-	switch(action.type) {
+	switch (action.type) {
 		case SEND_EMAIL_REQUEST:
 			return {
 				...state,

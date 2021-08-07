@@ -1,13 +1,13 @@
 import {
-	SET_USER_REQUEST,
-	SET_USER_SUCCESS,
-	SET_USER_FAILED,
-	SET_EMAIL,
 	RESET_EMAIL,
-	SET_PASSWORD,
+	RESET_NAME,
 	RESET_PASSWORD,
+	SET_EMAIL,
 	SET_NAME,
-	RESET_NAME
+	SET_PASSWORD,
+	SET_USER_FAILED,
+	SET_USER_REQUEST,
+	SET_USER_SUCCESS
 } from '../actions';
 
 const initialState = {
@@ -21,7 +21,7 @@ const initialState = {
 }
 
 export const user = (state = initialState, action) => {
-	switch(action.type) {
+	switch (action.type) {
 		case SET_USER_REQUEST:
 			return {
 				...state,

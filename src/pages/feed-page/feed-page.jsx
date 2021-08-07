@@ -5,15 +5,15 @@ import styles from './feed-page.module.scss';
 
 const FeedPage = () => {
 	return (
-		<div className={`${styles.main} pt-10`} >
+		<div className={`${styles.main} pt-10`}>
 			<h2 className="text text_type_main-large mb-10">Лента заказов</h2>
 			<div className={styles.container}>
 				<div className={styles.orders}>
-					<OrderItem />
-					<OrderItem />
-					<OrderItem />
-					<OrderItem />
-					<OrderItem />
+					<OrderItem/>
+					<OrderItem/>
+					<OrderItem/>
+					<OrderItem/>
+					<OrderItem/>
 				</div>
 				<div className={styles.details}>
 					<div className={`${styles.info} mb-15`}>

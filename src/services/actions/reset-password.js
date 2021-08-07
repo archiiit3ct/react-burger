@@ -1,4 +1,4 @@
-import { RESET_PASSWORD, RESET_EMAIL } from './index';
+import {RESET_EMAIL, RESET_PASSWORD} from './index';
 
 export const SEND_EMAIL_REQUEST = "SEND_EMAIL_REQUEST";
 export const SEND_EMAIL_SUCCESS = "SEND_EMAIL_SUCCESS";
@@ -14,7 +14,7 @@ export const RESET_EMAILCODE = "RESET_EMAILCODE";
 const _apiUrl = 'https://norma.nomoreparties.space/api';
 
 export function sendEmailForResetPass(email) {
-	return function(dispatch) {
+	return function (dispatch) {
 		dispatch({
 			type: SEND_EMAIL_REQUEST
 		});
@@ -51,7 +51,7 @@ export function sendEmailForResetPass(email) {
 }
 
 export function resetPassword(newPassword, emailCode) {
-	return function(dispatch) {
+	return function (dispatch) {
 		dispatch({
 			type: RESET_PASSWORD_REQUEST
 		})
@@ -78,8 +78,8 @@ export function resetPassword(newPassword, emailCode) {
 					type: RESET_PASSWORD_SUCCESS,
 					payload: response
 				})
-				dispatch({ type: RESET_EMAILCODE })
-				dispatch({ type: RESET_PASSWORD })
+				dispatch({type: RESET_EMAILCODE})
+				dispatch({type: RESET_PASSWORD})
 			}
 		}).catch(err => {
 			console.log(err);

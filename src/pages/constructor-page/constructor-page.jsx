@@ -9,8 +9,8 @@ const ConstructorPage = () => {
 	return (
 		<DndProvider backend={HTML5Backend}>
 			<main className={styles.main}>
-				<BurgerIngredients />
-				<BurgerConstructor />
+				<BurgerIngredients/>
+				<BurgerConstructor/>
 			</main>
 		</DndProvider>
 	);

@@ -9,7 +9,7 @@ const ForgotPasswordPage = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 
-	const { email, sendEmailSuccess } = useSelector(store => ({
+	const {email, sendEmailSuccess} = useSelector(store => ({
 		email: store.user.email,
 		sendEmailSuccess: store.resetPassword.sendEmailSuccess,
 	}))
@@ -20,7 +20,7 @@ const ForgotPasswordPage = () => {
 	}
 
 	useEffect(() => {
-		if(sendEmailSuccess && sendEmailSuccess.success) {
+		if (sendEmailSuccess && sendEmailSuccess.success) {
 			history.replace({pathname: '/reset-password'})
 		}
 	}, [sendEmailSuccess, history, dispatch]);
@@ -36,7 +36,7 @@ const ForgotPasswordPage = () => {
 						type="text"
 						placeholder="Укажите e-mail"
 						value={email}
-						onChange={e => dispatch({ type: SET_EMAIL, payload: e.target.value })}
+						onChange={e => dispatch({type: SET_EMAIL, payload: e.target.value})}
 					/>
 				</div>
 				<Button>Восстановить</Button>

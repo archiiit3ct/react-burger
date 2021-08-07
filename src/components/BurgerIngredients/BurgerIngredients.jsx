@@ -1,4 +1,4 @@
-import React, {useState, useRef, useCallback} from "react";
+import React, {useCallback, useRef, useState} from "react";
 import styles from "./BurgerIngredients.module.scss";
 import {Tab} from "@ya.praktikum/react-developer-burger-ui-components";
 import Modal from '../Modal/Modal';
@@ -34,10 +34,10 @@ const BurgerIngredients = () => {
 	}
 
 	const closeModal = useCallback(() => {
-			dispatch({type: CLOSE_INGREDIENT_MODAL})
-			dispatch({type: SET_MODAL_CONTENT, value: null});
-			history.replace({ pathname: '/', state: null })
-		}, [history, dispatch]);
+		dispatch({type: CLOSE_INGREDIENT_MODAL})
+		dispatch({type: SET_MODAL_CONTENT, value: null});
+		history.replace({pathname: '/', state: null})
+	}, [history, dispatch]);
 
 
 	const [current, setCurrent] = useState("bun");
@@ -116,10 +116,10 @@ const BurgerIngredients = () => {
 			</div>
 
 			{showIngredientModal && (
-					<Modal type="ingredient" onClose={closeModal}>
-						<IngredientDetails/>
-					</Modal>
-				)
+				<Modal type="ingredient" onClose={closeModal}>
+					<IngredientDetails/>
+				</Modal>
+			)
 			}
 		</section>
 	);

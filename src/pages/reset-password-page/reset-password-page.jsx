@@ -9,7 +9,7 @@ const ResetPasswordPage = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 
-	const { password, emailCode, resetPasswordSuccess } = useSelector(store => ({
+	const {password, emailCode, resetPasswordSuccess} = useSelector(store => ({
 		password: store.user.password,
 		emailCode: store.resetPassword.emailCode,
 		resetPasswordSuccess: store.resetPassword.resetPasswordSuccess,
@@ -21,7 +21,7 @@ const ResetPasswordPage = () => {
 	}
 
 	useEffect(() => {
-		if(resetPasswordSuccess && resetPasswordSuccess.success) {
+		if (resetPasswordSuccess && resetPasswordSuccess.success) {
 			history.replace({pathname: '/login'})
 		}
 	}, [history, resetPasswordSuccess]);
@@ -34,7 +34,7 @@ const ResetPasswordPage = () => {
 					<PasswordInput
 						value={password}
 						name={'password'}
-						onChange={e => dispatch({ type: SET_PASSWORD, payload: e.target.value })}
+						onChange={e => dispatch({type: SET_PASSWORD, payload: e.target.value})}
 					/>
 				</div>
 				<div className="mb-6">
@@ -42,7 +42,7 @@ const ResetPasswordPage = () => {
 						type="text"
 						placeholder="Введите код из письма"
 						value={emailCode}
-						onChange={e => dispatch({ type: SET_EMAILCODE, payload: e.target.value })}
+						onChange={e => dispatch({type: SET_EMAILCODE, payload: e.target.value})}
 					/>
 				</div>
 				<Button>Сохранить</Button>
