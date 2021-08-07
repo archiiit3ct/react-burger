@@ -5,11 +5,13 @@ import PropTypes from 'prop-types';
 import { useDrag } from "react-dnd";
 import { useDispatch } from "react-redux";
 import { addIngredientConstructor } from "../../services/actions/order";
+import {Link, useLocation} from "react-router-dom";
 
 const Ingredient = ({ item, openModal }) => {
   const dispatch = useDispatch();
+  const location = useLocation();
 
-  const [, dragRef] = useDrag({type: 'ingredient', item: {id: item._id}});
+  const [, dragRef] = useDrag({type: 'ingredient-page', item: {id: item._id}});
 
 
   const addIngredient = (e) => {
@@ -18,7 +20,11 @@ const Ingredient = ({ item, openModal }) => {
   }
 
   return (
-    <div
+    <Link
+      to={{
+        pathname: `/ingredients/${item._id}`,
+        state: {background: location}
+      }}
       className={`${styles.ingredient} mb-2`}
       onClick={() => {
         openModal(item)
@@ -26,10 +32,12 @@ const Ingredient = ({ item, openModal }) => {
       ref={dragRef}
     >
       <img src={item.image} alt={item.name} />
-      <Price price={item.price} />
-      <p className={`${styles.name} text text_type_main-default`}>{item.name}</p>
+      <section className={styles.desc}>
+        <Price price={item.price} />
+        <p className={`${styles.name} text text_type_main-default`}>{item.name}</p>
+      </section>
       <div className={styles.fake} onClick={addIngredient}></div>
-    </div>
+    </Link>
   );
 };
 

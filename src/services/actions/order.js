@@ -1,5 +1,3 @@
-import {ingredients} from "../reducers/ingredients";
-
 export const UPDATE_CART = 'UPDATE_CART';
 export const CLEAR_CART = 'CLEAR_CART';
 export const CREATE_NEW_ORDER_REQUEST = 'CREATE_NEW_ORDER_REQUEST';

@@ -4,6 +4,7 @@ export const GET_INGREDIENTS_FAILED = 'GET_INGREDIENTS_FAILED';
 export const OPEN_INGREDIENT_MODAL = 'OPEN_INGREDIENT_MODAL';
 export const CLOSE_INGREDIENT_MODAL = 'CLOSE_INGREDIENT_MODAL';
 export const SET_MODAL_CONTENT = 'SET_MODAL_CONTENT';
+export const SET_INGREDIENT_PAGE = 'SET_INGREDIENT_PAGE';
 
 const API = 'https://norma.nomoreparties.space/api/ingredients';
 

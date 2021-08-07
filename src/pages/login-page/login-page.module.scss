@@ -1,0 +1,39 @@
+.main {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 200px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.email {
+  margin: 24px 0;
+}
+
+.password {
+  margin-bottom: 24px;
+}
+
+.links {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.desc {
+  color: #8585AD
+}
+
+.link {
+  text-decoration: none;
+  color: #4C4CFF;
+}

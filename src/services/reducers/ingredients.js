@@ -4,8 +4,9 @@ import {
   GET_INGREDIENTS_SUCCESS,
   SET_MODAL_CONTENT,
   OPEN_INGREDIENT_MODAL,
-  CLOSE_INGREDIENT_MODAL
-} from "../actions/ingredients";
+  CLOSE_INGREDIENT_MODAL,
+  SET_INGREDIENT_PAGE
+} from "../actions";
 
 const initialState = {
   ingredients: [],
@@ -16,6 +17,7 @@ const initialState = {
 
   modalContent: null,
   showIngredientModal: false,
+  ingredientPage: null
 }
 
 export const ingredients = (state = initialState, action) => {
@@ -58,6 +60,12 @@ export const ingredients = (state = initialState, action) => {
       return {
         ...state,
         modalContent: action.value
+      }
+    }
+    case SET_INGREDIENT_PAGE: {
+      return {
+        ...state,
+        ingredientPage: action.value
       }
     }
     default: return state;

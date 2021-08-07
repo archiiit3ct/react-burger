@@ -5,12 +5,24 @@ import {useDispatch, useSelector} from "react-redux";
 import {CLOSE_ORDER, createOrder} from "../../services/actions/order";
 import Modal from "../Modal/Modal";
 import OrderDetails from "../OrderDetails/OrderDetails";
+import {useHistory} from "react-router-dom";
 
 const TotalPrice = () => {
   const dispatch = useDispatch();
-  const  {bun, fillings, showOrderDetails } = useSelector(store => store.order)
+  const  {bun, fillings, showOrderDetails, user } = useSelector(store => ({
+    bun: store.order.bun,
+    fillings: store.order.fillings,
+    showOrderDetails: store.order.showOrderDetails,
+    user: store.user.user
+  }));
+
+  const history = useHistory();
 
   const getOrder = () => {
+    if(!user) {
+      history.push({pathname: '/login'});
+      return;
+    }
     dispatch(createOrder())
   }
 

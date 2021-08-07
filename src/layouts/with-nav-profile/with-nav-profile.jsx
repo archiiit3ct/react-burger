@@ -1,15 +1,15 @@
 import React from 'react';
+import NavProfile from "../../components/NavProfile/NavProfile";
 
+import styles from "./with-nav-profile.module.scss";
 
-import s from './with-profile-nav.module.sass';
-
-const WithProfileNav = ({ children }) => {
+const WithNavProfile = ({ children }) => {
 	return (
-		<div className={`${s.container}`} >
-			<ProfileNav />
+		<div className={styles.container} >
+			<NavProfile />
 			{children}
 		</div>
 	)
 }
 
-export default WithProfileNav;
+export default WithNavProfile;

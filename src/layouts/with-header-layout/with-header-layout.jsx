@@ -1,7 +1,7 @@
 import React from 'react';
 import AppHeader from "../../components/AppHeader/AppHeader";
 
-const WithAppHeader = ({ children }) => {
+const WithHeaderLayout = ({ children }) => {
 	return (
 		<>
 			<AppHeader/>
@@ -10,4 +10,4 @@ const WithAppHeader = ({ children }) => {
 	)
 }
 
-export default WithAppHeader;
+export default WithHeaderLayout;

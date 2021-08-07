@@ -11,7 +11,7 @@ const BurgerConstructor = () => {
   const { bun, fillings } = useSelector(store => store.order);
 
   const [{isHover}, dropTarget] = useDrop({
-    accept: 'ingredient',
+    accept: 'ingredient-page',
     drop(item) {
       dispatch(addIngredientConstructor(item.id));
     },
