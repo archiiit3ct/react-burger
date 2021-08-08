@@ -1,4 +1,4 @@
-import React, {useCallback, useRef, useState} from "react";
+import React, {useCallback, useMemo, useRef, useState} from "react";
 import styles from "./BurgerIngredients.module.scss";
 import {Tab} from "@ya.praktikum/react-developer-burger-ui-components";
 import Modal from '../Modal/Modal';
@@ -25,6 +25,7 @@ const tabs = [
 
 const BurgerIngredients = () => {
 	const {ingredients, ingredientsSuccess, showIngredientModal} = useSelector(store => store.ingredients);
+	const { bun, fillings } = useSelector(store => store.order);
 	const dispatch = useDispatch();
 	const history = useHistory();
 
@@ -72,6 +73,16 @@ const BurgerIngredients = () => {
 		setCurrent(minName);
 	};
 
+	const counters = useMemo(() => {
+		const counter = {};
+		fillings.map((ingredient) => {
+			if (!counter[ingredient._id]) counter[ingredient._id] = 0;
+			counter[ingredient._id]++;
+		});
+		if (bun) counter[bun._id] = 2;
+		return counter;
+	}, [bun, fillings]);
+
 	return (
 		<section className={styles.main}>
 			<p className="text text_type_main-large">Соберите бургер</p>
@@ -105,6 +116,7 @@ const BurgerIngredients = () => {
 											<Ingredient
 												item={item}
 												openModal={openModal}
+												count={counters[item._id]}
 											/>
 										</li>
 									)

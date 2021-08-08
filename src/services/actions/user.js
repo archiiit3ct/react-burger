@@ -24,8 +24,11 @@ function updateAccessToken() {
 		body: JSON.stringify({
 			token: localStorage.getItem('refreshToken')
 		})
-	}).then(response => {
-		return response.json();
+	}).then(res => {
+		if (res.ok) {
+			return res.json();
+		}
+		return Promise.reject(`Ошибка ${res.status}`);
 	})
 }
 

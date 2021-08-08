@@ -1,12 +1,17 @@
 import React from 'react';
 import styles from './login-page.module.scss';
 import {Button, EmailInput, PasswordInput} from "@ya.praktikum/react-developer-burger-ui-components";
-import {Link} from "react-router-dom";
+import {Link, useHistory, useLocation} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {SET_EMAIL, SET_PASSWORD, userLogin,} from "../../services/actions";
 
 const LoginPage = () => {
 	const dispatch = useDispatch();
+	const history = useHistory();
+	const location = useLocation();
+
+	let { from } = location.state || { from: { pathname: "/" } };
+
 
 	const {email, password} = useSelector(store => ({
 		email: store.user.email,
@@ -15,7 +20,8 @@ const LoginPage = () => {
 
 	const onSubmit = (e) => {
 		e.preventDefault();
-		dispatch(userLogin(email, password))
+		dispatch(userLogin(email, password));
+		history.replace(from);
 	}
 
 	return (
