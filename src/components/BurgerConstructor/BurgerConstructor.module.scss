@@ -26,10 +26,6 @@
   }
 }
 
-.icon {
-  margin-right: 13px;
-}
-
 .edgeElement {
   max-width: 516px;
   margin-left: 37px;
@@ -39,13 +35,16 @@
   }
 }
 
-.element {
-  display: flex;
-  align-items: center;
-  max-width: 563px;
-  width: 100%;
 
-  &:hover {
-    cursor: pointer;
+.emptyConstructor {
+  margin-top: 50px;
+  padding: 250px 100px;
+  border: 1px solid #2f2f37;
+  border-radius: 20px;
+  text-align: center;
+
+  &:focus-within {
+    background-color: #1C1C21;
   }
 }
+

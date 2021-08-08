@@ -1,22 +1,54 @@
-import React, { useContext } from "react";
+import { useMemo }  from "react";
 import styles from "./TotalPrice.module.scss";
-import { Button, CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import { ConstructorContext } from "../../services/constructorContext";
+import {Button, CurrencyIcon} from "@ya.praktikum/react-developer-burger-ui-components";
+import {useDispatch, useSelector} from "react-redux";
+import {CLOSE_ORDER, createOrder} from "../../services/actions/order";
+import Modal from "../Modal/Modal";
+import OrderDetails from "../OrderDetails/OrderDetails";
 
 const TotalPrice = () => {
-  const { totalPrice, getOrder} = useContext(ConstructorContext)
+  const dispatch = useDispatch();
+  const  {bun, fillings, showOrderDetails } = useSelector(store => store.order)
+
+  const getOrder = () => {
+    dispatch(createOrder())
+  }
+
+  const closeModal = (e) => {
+    e.stopPropagation();
+    dispatch({type: CLOSE_ORDER})
+  }
+
+  const totalPrice = useMemo(
+    () => {
+      let result = 0;
+      if (!!bun) {
+        result += 2 * bun.price;
+      }
+      if (fillings.length > 0) {
+        result += fillings.reduce((acc, filling) => acc + filling.price, 0);
+      }
+      return result;
+    },
+    [bun, fillings]
+  );
 
   return (
     <section className={styles.total}>
       <div className={styles.price}>
         <p className={`${styles.number} text text_type_main-large`}>
-          { totalPrice }
+          {totalPrice}
         </p>
-        <CurrencyIcon type="primary" />
+        <CurrencyIcon type="primary"/>
       </div>
       <Button type="primary" size="medium" onClick={() => getOrder()}>
         Оформить заказ
       </Button>
+      { showOrderDetails &&
+        <Modal type="ingredient" onClose={closeModal}>
+          <OrderDetails />
+        </Modal>
+      }
     </section>
   );
 };
