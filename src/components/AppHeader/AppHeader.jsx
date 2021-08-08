@@ -25,7 +25,9 @@ const AppHeader = () => {
 					<p className="text text_type_main-default ml-2">Лента заказов</p>
 				</NavLink>
 			</div>
-			<Logo className={styles.logo}/>
+			<NavLink to="/">
+				<Logo className={styles.logo}/>
+			</NavLink>
 			{!user && (
 				<NavLink to="/login" className={styles.personal} activeClassName={styles.linkActive}>
 					<ProfileIcon type={path === '/profile' ? 'primary' : 'secondary'}/>
