@@ -7,11 +7,14 @@ import {
 	SET_PASSWORD,
 	SET_USER_FAILED,
 	SET_USER_REQUEST,
-	SET_USER_SUCCESS
+	SET_USER_SUCCESS,
+	SET_SUCCESS,
+	SET_FAILED
 } from '../actions';
 
 const initialState = {
 	userRequest: false,
+	userSuccess: false,
 	userFailed: false,
 	user: null,
 
@@ -70,6 +73,16 @@ export const user = (state = initialState, action) => {
 			return {
 				...state,
 				name: ''
+			}
+		case SET_SUCCESS:
+			return {
+				...state,
+				userSuccess: true,
+			}
+		case SET_FAILED:
+			return {
+				...state,
+				userSuccess: false,
 			}
 		default:
 			return state

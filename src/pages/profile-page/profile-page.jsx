@@ -12,6 +12,7 @@ const ProfilePage = () => {
 		name: store.user.name,
 		password: store.user.password,
 	}))
+	
 	const handleUpdateUserInfo = (e) => {
 		e.preventDefault();
 		dispatch(updateUserInfo({

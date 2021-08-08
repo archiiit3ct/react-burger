@@ -11,7 +11,10 @@ export const SET_PASSWORD = "SET_PASSWORD";
 export const RESET_PASSWORD = "RESET_PASSWORD";
 
 export const SET_NAME = "SET_NAME";
-export const RESET_NAME = "RESET_NAME"
+export const RESET_NAME = "RESET_NAME";
+
+export const SET_SUCCESS = "SET_SUCCESS";
+export const SET_FAILED = "SET_FAILED";
 
 const _apiUrl = 'https://norma.nomoreparties.space/api';
 
@@ -58,10 +61,13 @@ function updateUserInfoFetch(userObj) {
 }
 
 export function getUserInfo() {
-	return function (dispatch) {
+	return async function (dispatch) {
 		dispatch({type: SET_USER_REQUEST});
 		userInfoFetch().then(response => {
 			if (response.success) {
+				dispatch({
+					type: SET_SUCCESS
+				})
 				dispatch({
 					type: SET_USER_SUCCESS,
 					payload: response.user
@@ -74,8 +80,14 @@ export function getUserInfo() {
 					type: SET_EMAIL,
 					payload: response.user.email
 				})
+				return true;
 			} else {
-				dispatch({type: SET_USER_FAILED})
+				dispatch({
+					type: SET_FAILED
+				})
+				dispatch({
+					type: SET_USER_FAILED
+				});
 				if (response.message === 'jwt expired') {
 					updateAccessToken().then(data => {
 						if (data.success) {
@@ -86,6 +98,9 @@ export function getUserInfo() {
 							localStorage.setItem('refreshToken', refreshToken)
 
 							userInfoFetch().then(response => {
+								dispatch({
+									type: SET_SUCCESS
+								})
 								dispatch({
 									type: SET_USER_SUCCESS,
 									payload: response.user
@@ -215,7 +230,7 @@ export function userRegister(name, email, password) {
 }
 
 export function userLogin(email, password) {
-	return function (dispatch) {
+	return async function(dispatch) {
 		dispatch({
 			type: SET_USER_REQUEST
 		});
@@ -238,6 +253,9 @@ export function userLogin(email, password) {
 			}
 		}).then(response => {
 			if (response.success) {
+				dispatch({
+					type: SET_SUCCESS
+				})
 				dispatch({
 					type: SET_USER_SUCCESS,
 					payload: response.user
@@ -271,7 +289,7 @@ export function userLogin(email, password) {
 }
 
 export function userLogout(token) {
-	return function (dispatch) {
+	return async function(dispatch) {
 		dispatch({
 			type: SET_USER_REQUEST
 		});
@@ -284,6 +302,7 @@ export function userLogout(token) {
 				"token": token
 			})
 		}).then(response => {
+			console.log(response)
 			if (response.ok) {
 				return response.json()
 			} else {
@@ -294,9 +313,15 @@ export function userLogout(token) {
 		}).then(response => {
 			if (response.success) {
 				dispatch({
+					type: SET_FAILED
+				})
+				dispatch({
 					type: SET_USER_SUCCESS,
 					payload: null
 				})
+				dispatch({type: RESET_EMAIL})
+				dispatch({type: RESET_PASSWORD})
+				dispatch({type: RESET_NAME})
 				localStorage.removeItem('refreshToken')
 				deleteCookie('accessToken')
 			} else {

@@ -44,7 +44,9 @@ import {
 	updateUserInfo,
 	userLogin,
 	userLogout,
-	userRegister
+	userRegister,
+	SET_SUCCESS,
+	SET_FAILED
 } from './user';
 
 export {
@@ -84,5 +86,7 @@ export {
 	SET_USER_FAILED,
 	SET_USER_SUCCESS,
 	getUserInfo,
-	updateUserInfo
+	updateUserInfo,
+	SET_SUCCESS,
+	SET_FAILED
 }

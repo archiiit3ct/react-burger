@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './login-page.module.scss';
 import {Button, EmailInput, PasswordInput} from "@ya.praktikum/react-developer-burger-ui-components";
 import {Link, useHistory, useLocation} from "react-router-dom";
@@ -12,17 +12,19 @@ const LoginPage = () => {
 
 	let { from } = location.state || { from: { pathname: "/" } };
 
-
-	const {email, password} = useSelector(store => ({
-		email: store.user.email,
-		password: store.user.password,
-	}))
+	const {email, password, userSuccess} = useSelector(store => store.user)
 
 	const onSubmit = (e) => {
 		e.preventDefault();
-		dispatch(userLogin(email, password));
-		history.replace(from);
+		dispatch(userLogin(email, password))
 	}
+
+	useEffect(() => {
+		if(userSuccess) {
+			history.replace(from);
+		}
+	}, [userSuccess]);
+
 
 	return (
 		<div className={styles.main}>
