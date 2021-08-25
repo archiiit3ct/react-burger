@@ -16,8 +16,8 @@ import NotFound404Page from "../../pages/not-found-404-page/nof-found-404-page";
 import WithHeaderLayout from "../../layouts/with-header-layout/with-header-layout";
 import {ProtectedRoute} from "../../layouts/protected-route/protected-route";
 import WithNavProfile from "../../layouts/with-nav-profile/with-nav-profile";
-import {getUserInfo} from "../../services/actions";
 import DefaultRoute from "../../layouts/default-route/default-route";
+import {handleRefresh} from "../../services/actions";
 
 function App() {
 	const dispatch = useDispatch();
@@ -26,9 +26,9 @@ function App() {
 	useEffect(() => {
 		if (!ingredients.length) dispatch(getIngredients());
 		if (localStorage.getItem('refreshToken')) {
-			dispatch(getUserInfo());
+			dispatch(handleRefresh());
 		}
-	}, [dispatch]);
+	}, [dispatch, ingredients.length]);
 
 	const AppContent = () => {
 		const location = useLocation();

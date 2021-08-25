@@ -1,24 +1,21 @@
 import React, {useEffect} from 'react';
 import {Redirect, Route} from 'react-router-dom';
-import {useDispatch} from "react-redux";
-import {getUserInfo} from "../../services/actions";
+import {useDispatch, useSelector} from "react-redux";
+import {handleRefresh} from "../../services/actions";
+
 
 export function ProtectedRoute({children, ...rest}) {
-	const isAuth = localStorage.getItem('refreshToken');
-
 	const dispatch = useDispatch();
-	const init = async () => {
-		await dispatch(getUserInfo());
-	};
-
+	const hasToken = localStorage.getItem('refreshToken');
+	const {name} = useSelector((store) => store.user);
 	useEffect(() => {
-		if(isAuth) init();
-	}, []);
+		dispatch(handleRefresh());
+	}, [dispatch]);
 
 	return (
-		<Route {...rest} render={({ location }) => isAuth ? (children) : (<Redirect to={{
+		<Route {...rest} render={({location}) => name || hasToken ? (children) : (<Redirect to={{
 			pathname: '/login',
-			state: { from: location }
+			state: {from: location}
 		}}/>)}/>
 	);
 }

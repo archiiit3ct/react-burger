@@ -9,17 +9,17 @@ import {useHistory} from "react-router-dom";
 
 const TotalPrice = () => {
 	const dispatch = useDispatch();
-	const {bun, fillings, showOrderDetails, user} = useSelector(store => ({
+	const {bun, fillings, showOrderDetails} = useSelector(store => ({
 		bun: store.order.bun,
 		fillings: store.order.fillings,
 		showOrderDetails: store.order.showOrderDetails,
-		user: store.user.user
 	}));
+	const refreshToken = localStorage.getItem('refreshToken');
 
 	const history = useHistory();
 
 	const getOrder = () => {
-		if (!user) {
+		if (!refreshToken) {
 			history.push({pathname: '/login'});
 			return;
 		}

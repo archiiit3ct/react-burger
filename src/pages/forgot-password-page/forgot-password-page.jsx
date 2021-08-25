@@ -1,29 +1,24 @@
-import React, {useEffect} from 'react';
+import React, {useState} from 'react';
 import styles from './forgot-password-page.module.scss';
 import {Button, Input} from "@ya.praktikum/react-developer-burger-ui-components";
-import {Link, useHistory} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {sendEmailForResetPass, SET_EMAIL} from "../../services/actions";
+import {Link, Redirect, useHistory} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {handleForgot} from "../../services/actions";
 
 const ForgotPasswordPage = () => {
+	const [email, setEmail] = useState('');
 	const dispatch = useDispatch();
 	const history = useHistory();
 
-	const {email, sendEmailSuccess} = useSelector(store => ({
-		email: store.user.email,
-		sendEmailSuccess: store.resetPassword.sendEmailSuccess,
-	}))
-
 	const onSubmit = (e) => {
 		e.preventDefault();
-		dispatch(sendEmailForResetPass(email))
-	}
+		dispatch(handleForgot(email, history));
+	};
 
-	useEffect(() => {
-		if (sendEmailSuccess && sendEmailSuccess.success) {
-			history.replace({pathname: '/reset-password'})
-		}
-	}, [sendEmailSuccess, history, dispatch]);
+	const refreshToken = localStorage.getItem('refreshToken');
+	if (refreshToken) {
+		return <Redirect to={{pathname: '/profile'}}/>
+	}
 
 	return (
 		<div className={styles.main}>
@@ -36,7 +31,7 @@ const ForgotPasswordPage = () => {
 						type="text"
 						placeholder="Укажите e-mail"
 						value={email}
-						onChange={e => dispatch({type: SET_EMAIL, payload: e.target.value})}
+						onChange={e => setEmail(e.target.value)}
 					/>
 				</div>
 				<Button>Восстановить</Button>

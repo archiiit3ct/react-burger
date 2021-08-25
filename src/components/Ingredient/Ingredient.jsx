@@ -1,9 +1,9 @@
-import React, {useMemo} from 'react';
+import React from 'react';
 import styles from './Ingredient.module.scss';
 import Price from '../Price/Price';
 import PropTypes from 'prop-types';
 import {useDrag} from "react-dnd";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {addIngredientConstructor} from "../../services/actions/order";
 import {Link, useLocation} from "react-router-dom";
 import {Counter} from "@ya.praktikum/react-developer-burger-ui-components";
@@ -33,7 +33,7 @@ const Ingredient = ({item, openModal, count}) => {
 		>
 			{count && (
 				<div className={styles.counter}>
-					<Counter count={count} size="default" />
+					<Counter count={count} size="default"/>
 				</div>
 			)}
 			<img src={item.image} alt={item.name}/>
