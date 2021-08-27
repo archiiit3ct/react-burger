@@ -1,3 +1,4 @@
-import style from './loader.module.css';
-const Loader = () => <div className={style.ldsDualRing}></div>;
+import style from './Loader.module.scss';
+
+const Loader = () => <div className={style.ldsRipple}/>;
 export default Loader;

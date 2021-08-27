@@ -1,20 +1,21 @@
-import Main from './main/main';
-import Login from './login/login';
-import Register from './register/register';
-import Forgot from './forgot/forgot';
-import Reset from './reset/reset';
-import Profile from './profile/profile';
-import History from './history/history';
-import Feed from './feed/feed';
-import SingleOrder from './single-order/single-order';
+import MainPage from './main-page/main-page';
+import LoginPage from './login-page/login-page';
+import RegisterPage from './register-page/register-page';
+import ForgotPage from './forgot-page/forgot-page';
+import ResetPage from './reset-page/reset-page';
+import ProfilePage from './profile-page/profile-page';
+import HistoryPage from './history-page/history-page';
+import FeedPage from './feed-page/feed-page';
+import SingleOrderPage from './single-order-page/single-order-page';
+
 export {
-  Main,
-  Login,
-  Register,
-  Forgot,
-  Reset,
-  Profile,
-  History,
-  Feed,
-  SingleOrder,
+    MainPage,
+    LoginPage,
+    RegisterPage,
+    ForgotPage,
+    ResetPage,
+    ProfilePage,
+    HistoryPage,
+    FeedPage,
+    SingleOrderPage,
 };

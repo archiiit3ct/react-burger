@@ -4,6 +4,7 @@
   justify-content: center;
   margin-top: 180px;
 }
+
 .form {
   width: 480px;
   display: flex;
@@ -11,13 +12,16 @@
   align-items: center;
   gap: 24px;
 }
+
 .nav {
   text-align: center;
 }
+
 .link {
   color: #4c4cff;
   text-decoration: none;
 }
+
 :global(.input_size_default) {
   width: 480px;
 }

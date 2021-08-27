@@ -2,32 +2,41 @@
   flex-basis: 600px;
   padding-top: 40px;
 }
+
 .allIngredients {
   padding-top: 20px;
 }
+
 .tabs {
   display: flex;
   justify-content: space-between;
 }
+
 .tab {
   flex-grow: 1;
 }
+
 .wrapperAllIngredients {
   overflow-y: auto;
   max-height: 65vh;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #2f2f37;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #8585ad;
+  }
 }
-.wrapperAllIngredients::-webkit-scrollbar {
-  width: 8px;
-}
-.wrapperAllIngredients::-webkit-scrollbar-track {
-  background: #2f2f37;
-}
-.wrapperAllIngredients::-webkit-scrollbar-thumb {
-  background: #8585ad;
-}
+
 .ingredients {
   padding-bottom: 40px;
 }
+
 .cardsIngredients {
   padding: 24px 16px 0;
   display: flex;

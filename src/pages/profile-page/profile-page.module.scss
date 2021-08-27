@@ -3,29 +3,35 @@
   width: 860px;
   gap: 60px;
 }
+
 .nav {
   flex-basis: 320px;
 }
+
 .form {
   flex-basis: 480px;
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
+
 .active {
   color: var(--text-primary-color);
 }
+
 .buttons {
   display: flex;
   justify-content: flex-end;
   gap: 28px;
 }
+
 .button {
   color: var(--colors-interface-accent);
   background: none;
   border: none;
   cursor: pointer;
 }
+
 .button:hover {
   transform: scale(1.05);
 }

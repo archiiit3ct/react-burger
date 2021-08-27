@@ -4,9 +4,10 @@
   margin: auto;
   background: #1c1c21;
   box-shadow: 0px 24px 32px rgba(0, 0, 0, 0.04),
-    0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
-    0px 0px 1px rgba(0, 0, 0, 0.04);
+  0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
+  0px 0px 1px rgba(0, 0, 0, 0.04);
 }
+
 .container {
   max-width: 1280px;
   height: 56px;
@@ -15,21 +16,25 @@
   justify-content: center;
   align-items: center;
 }
+
 .wrapperNav {
   width: 33.3vw;
   display: flex;
   justify-content: flex-start;
 }
+
 .wrapperLogo {
   width: 33.3vw;
   display: flex;
   justify-content: center;
 }
+
 .wrapperLk {
   width: 33.3vw;
   display: flex;
   justify-content: flex-end;
 }
+
 .button {
   display: flex;
   align-items: center;
@@ -43,12 +48,15 @@
   display: flex;
   align-items: center;
 }
+
 .ul {
   display: flex;
 }
+
 .active {
   color: var(--text-primary-color);
-}
-.active svg {
-  fill: var(--text-primary-color);
+
+  svg {
+    fill: var(--text-primary-color);
+  }
 }

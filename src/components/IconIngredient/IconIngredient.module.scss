@@ -6,17 +6,19 @@
   overflow: hidden;
   position: relative;
   background: linear-gradient(to right, #801ab2, #4c4cff);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background-color: #131316;
+    border-radius: 50%;
+  }
 }
-.pict::before {
-  content: '';
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
-  background-color: #131316;
-  border-radius: 50%;
-}
+
 .img {
   max-height: 56px;
   position: absolute;
@@ -24,6 +26,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .inf {
   position: absolute;
   display: flex;
@@ -34,5 +37,4 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgb(28 28 33 / 60%);
 }
