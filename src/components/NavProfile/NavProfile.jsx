@@ -1,25 +1,16 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styles from './NavProfile.module.scss';
 import {NavLink, useHistory} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {userLogout} from "../../services/actions";
+import {useDispatch} from "react-redux";
+import {handleLogout} from "../../services/actions";
 
 const NavProfile = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 
-	const {userSuccess} = useSelector(store => store.user)
-
 	const logoutProfile = () => {
-		const refreshToken = localStorage.getItem('refreshToken');
-		dispatch(userLogout(refreshToken));
+		dispatch(handleLogout(history));
 	};
-
-	useEffect(() => {
-		if(!userSuccess) {
-			history.replace({pathname: '/login'})
-		}
-	}, [userSuccess, history]);
 
 	return (
 		<div className={`${styles.navigation} pt-30`}>

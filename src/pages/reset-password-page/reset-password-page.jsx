@@ -1,30 +1,25 @@
-import React, {useEffect} from 'react';
+import React, {useState} from 'react';
 import styles from "./reset-password-page.module.scss";
 import {Button, Input, PasswordInput} from "@ya.praktikum/react-developer-burger-ui-components";
-import {Link, useHistory} from "react-router-dom";
+import {Link, Redirect, useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {resetPassword, SET_EMAILCODE, SET_PASSWORD} from "../../services/actions";
+import {handleReset} from "../../services/actions";
 
 const ResetPasswordPage = () => {
+	const {forgotSuccess} = useSelector((state) => state.user);
+	const [password, setPassword] = useState('');
+	const [token, setToken] = useState('');
 	const dispatch = useDispatch();
 	const history = useHistory();
 
-	const {password, emailCode, resetPasswordSuccess} = useSelector(store => ({
-		password: store.user.password,
-		emailCode: store.resetPassword.emailCode,
-		resetPasswordSuccess: store.resetPassword.resetPasswordSuccess,
-	}))
-
 	const onSubmit = (e) => {
 		e.preventDefault();
-		dispatch(resetPassword(password, emailCode))
-	}
+		dispatch(handleReset(password, token, history));
+	};
 
-	useEffect(() => {
-		if (resetPasswordSuccess && resetPasswordSuccess.success) {
-			history.replace({pathname: '/login'})
-		}
-	}, [history, resetPasswordSuccess]);
+	if (!forgotSuccess) {
+		return <Redirect to="/forgot-password"/>
+	}
 
 	return (
 		<div className={styles.main}>
@@ -34,15 +29,15 @@ const ResetPasswordPage = () => {
 					<PasswordInput
 						value={password}
 						name={'password'}
-						onChange={e => dispatch({type: SET_PASSWORD, payload: e.target.value})}
+						onChange={e => setPassword(e.target.value)}
 					/>
 				</div>
 				<div className="mb-6">
 					<Input
 						type="text"
 						placeholder="Введите код из письма"
-						value={emailCode}
-						onChange={e => dispatch({type: SET_EMAILCODE, payload: e.target.value})}
+						value={token}
+						onChange={e => setToken(e.target.value)}
 					/>
 				</div>
 				<Button>Сохранить</Button>

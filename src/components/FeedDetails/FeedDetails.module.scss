@@ -1,6 +1,6 @@
-.container {
+.main {
   width: 640px;
-  margin: 50px auto;
+  margin: auto;
 }
 
 .id {
@@ -16,7 +16,7 @@
   display: flex;
   gap: 16px;
   flex-direction: column;
-  height: 305px;
+  height: 225px;
   overflow: auto;
   padding: 0;
 }

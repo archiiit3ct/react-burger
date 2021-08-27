@@ -25,7 +25,7 @@ const tabs = [
 
 const BurgerIngredients = () => {
 	const {ingredients, ingredientsSuccess, showIngredientModal} = useSelector(store => store.ingredients);
-	const { bun, fillings } = useSelector(store => store.order);
+	const {bun, fillings} = useSelector(store => store.order);
 	const dispatch = useDispatch();
 	const history = useHistory();
 
@@ -75,6 +75,7 @@ const BurgerIngredients = () => {
 
 	const counters = useMemo(() => {
 		const counter = {};
+		// eslint-disable-next-line array-callback-return
 		fillings.map((ingredient) => {
 			if (!counter[ingredient._id]) counter[ingredient._id] = 0;
 			counter[ingredient._id]++;
