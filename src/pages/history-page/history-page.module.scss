@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  gap: 60px;
+}
+.nav {
+  flex-basis: 320px;
+}
+.feed {
+  width: 860px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-height: 85vh;
+  overflow: auto;
+}
+.active {
+  color: var(--text-primary-color);
+}
+
+.feed::-webkit-scrollbar {
+  width: 8px;
+}
+.feed::-webkit-scrollbar-track {
+  background: #2f2f37;
+}
+.feed::-webkit-scrollbar-thumb {
+  background: #8585ad;
+}

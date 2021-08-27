@@ -1,0 +1,15 @@
+.item {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  width: 608px;
+}
+.name {
+  flex-grow: 1;
+}
+.price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

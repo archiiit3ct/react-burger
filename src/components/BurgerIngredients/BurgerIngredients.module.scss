@@ -1,42 +1,36 @@
-.main {
-  max-width: 600px;
-  width: 100%;
-  margin-top: 40px;
+.burgerIngredients {
+  flex-basis: 600px;
+  padding-top: 40px;
 }
-
+.allIngredients {
+  padding-top: 20px;
+}
+.tabs {
+  display: flex;
+  justify-content: space-between;
+}
 .tab {
-  display: flex;
-  margin-top: 20px;
+  flex-grow: 1;
 }
-
-.scrollable {
-  height: 600px;
+.wrapperAllIngredients {
   overflow-y: auto;
-  margin-top: 20px;
-
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: #2F2F37;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #8585AD;
-    outline: 1px solid #8585AD;
-  }
+  max-height: 65vh;
 }
-
-.list {
+.wrapperAllIngredients::-webkit-scrollbar {
+  width: 8px;
+}
+.wrapperAllIngredients::-webkit-scrollbar-track {
+  background: #2f2f37;
+}
+.wrapperAllIngredients::-webkit-scrollbar-thumb {
+  background: #8585ad;
+}
+.ingredients {
+  padding-bottom: 40px;
+}
+.cardsIngredients {
+  padding: 24px 16px 0;
   display: flex;
-  justify-content: flex-start;
   flex-wrap: wrap;
-  column-gap: 24px;
-  row-gap: 32px;
-  padding: 0 !important;
-}
-
-.item {
-  list-style-type: none;
+  justify-content: space-between;
 }
