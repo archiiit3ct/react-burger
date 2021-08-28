@@ -2,9 +2,9 @@ import style from './BurgerIngredients.module.scss';
 import {Tab} from '@ya.praktikum/react-developer-burger-ui-components';
 import BurgerIngredient from '../BurgerIngredient/BurgerIngredient';
 import {useSelector} from '../../services/hooks';
-import {useCallback, useRef, useState} from 'react';
+import {FC, useCallback, useRef, useState} from 'react';
 
-const BurgerIngredients = () => {
+const BurgerIngredients: FC = () => {
     const {ingredients} = useSelector((state) => state.ingredients);
     const [tab, setTab] = useState('bun');
 

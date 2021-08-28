@@ -6,6 +6,6 @@ interface IModalOverlay {
 }
 
 const ModalOverlay: FC<IModalOverlay> = ({closeModal}) => (
-    <div className={style.overlay} onClick={closeModal}></div>
+    <div className={style.overlay} onClick={closeModal} />
 );
 export default ModalOverlay;

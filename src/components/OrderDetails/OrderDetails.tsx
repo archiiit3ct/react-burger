@@ -1,8 +1,9 @@
+import {FC} from "react";
 import {CheckMarkIcon} from '@ya.praktikum/react-developer-burger-ui-components';
 import style from './OrderDetails.module.scss';
 import {useSelector} from '../../services/hooks';
 
-const OrderDetails = () => {
+const OrderDetails: FC = () => {
     const {order} = useSelector((state) => state.order);
     return (
         <section className={style.order}>

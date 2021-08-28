@@ -1,8 +1,10 @@
+import {FC} from "react";
 import style from './InfoTotalOrders.module.scss';
 import {useSelector} from '../../services/hooks';
 import {TOrder} from '../../services/types';
 
-export const InfoTotalOrders = () => {
+
+export const InfoTotalOrders: FC = () => {
     const {totalToday, total, orders} = useSelector(
         (store) => store.ws.messages
     );

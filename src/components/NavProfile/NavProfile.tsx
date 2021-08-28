@@ -1,9 +1,10 @@
+import {FC} from "react";
 import {NavLink, useHistory} from 'react-router-dom';
 import {useDispatch} from '../../services/hooks';
 import {logout} from '../../services/actions/auth';
 import style from './NavProfile.module.scss';
 
-const NavProfile = () => {
+const NavProfile: FC = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const handlerClick = () => {

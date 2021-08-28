@@ -1,8 +1,10 @@
+import {FC} from "react";
 import {Link, NavLink, useLocation} from 'react-router-dom';
 import style from './AppHeader.module.scss';
 import {BurgerIcon, ListIcon, Logo, ProfileIcon,} from '@ya.praktikum/react-developer-burger-ui-components';
 
-const AppHeader = () => {
+
+const AppHeader: FC = () => {
     const location = useLocation().pathname;
 
     return (
