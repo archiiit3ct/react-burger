@@ -77,15 +77,15 @@ describe('constructor reducer', () => {
 		).toEqual(
 			expect.objectContaining({
 				...initialState,
-				constructorIngredients: null,
 				constructorBun: null,
+				constructorIngredients: []
 			})
 		);
 	});
 	it('return initial state', () => {
 		expect(constructorReducer(initialState, {})).toEqual({
 			constructorIngredients: [],
-			constructorBun: {},
+			constructorBun: null,
 		});
 	});
 });

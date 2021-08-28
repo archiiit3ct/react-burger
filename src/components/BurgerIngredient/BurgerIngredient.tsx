@@ -1,6 +1,6 @@
 import {FC, useMemo} from 'react';
 import style from './BurgerIngredient.module.scss';
-import {TIngredient, TConstructorIngredient} from '../../services/types';
+import {TIngredient} from '../../services/types';
 import {Counter, CurrencyIcon,} from '@ya.praktikum/react-developer-burger-ui-components';
 import {useSelector} from '../../services/hooks';
 import {useDrag} from 'react-dnd';
@@ -10,14 +10,9 @@ interface IBurgerIngredient {
     ingredient: TIngredient;
 }
 
-type IIngredient = {
-    constructorIngredients: TConstructorIngredient[];
-    constructorBun: TIngredient;
-}
-
 const BurgerIngredient: FC<IBurgerIngredient> = ({ingredient}) => {
     const location = useLocation();
-    const { constructorIngredients, constructorBun } : IIngredient = useSelector((state) => state.constructor);
+    const { constructorIngredients, constructorBun } = useSelector((state) => state.constructor);
     const [, dragRef] = useDrag({
         type: 'Ingredient',
         item: {ingredient},
@@ -54,7 +49,7 @@ const BurgerIngredient: FC<IBurgerIngredient> = ({ingredient}) => {
             <img src={ingredient.image} alt={ingredient.name}/>
             <div className={style.price}>
         <span className='text text_type_digits-default pr-2'>
-          {ingredient.price}
+            {ingredient.price}
         </span>
                 <CurrencyIcon type='primary'/>
             </div>

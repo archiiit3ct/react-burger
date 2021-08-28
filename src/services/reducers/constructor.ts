@@ -1,23 +1,23 @@
 import {
-  ADD_CONSTRUCTOR_INGREDIENT,
-  DEL_CONSTRUCTOR_INGREDIENT,
-  MOVE_CONSTRUCTOR_ITEM,
-  TConstructorAction
+    ADD_CONSTRUCTOR_INGREDIENT,
+    DEL_CONSTRUCTOR_INGREDIENT,
+    MOVE_CONSTRUCTOR_ITEM,
+    TConstructorAction
 } from '../actions/constructor';
 import {ADD_ORDER_SUCCESS} from '../actions/order';
 import {TConstructorIngredient, TIngredient} from '../types';
 
 type TConstructorState = {
     constructorIngredients: TConstructorIngredient[],
-    constructorBun: TIngredient | {},
+    constructorBun: TIngredient | null,
 };
 
 const initialState: TConstructorState = {
     constructorIngredients: [],
-    constructorBun: {},
+    constructorBun: null,
 };
 
-export const constructorReducer = (state = initialState, action: TConstructorAction) => {
+export const constructorReducer = (state = initialState, action: TConstructorAction): TConstructorState => {
     switch (action.type) {
         case MOVE_CONSTRUCTOR_ITEM: {
             const dragIndex = action.dragIndex;
@@ -74,7 +74,7 @@ export const constructorReducer = (state = initialState, action: TConstructorAct
         case ADD_ORDER_SUCCESS: {
             return {
                 ...state,
-                constructorIngredients: null,
+                constructorIngredients: [],
                 constructorBun: null,
             };
         }

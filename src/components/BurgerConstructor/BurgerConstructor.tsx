@@ -7,12 +7,7 @@ import {useDispatch, useSelector} from '../../services/hooks';
 import {ADD_CONSTRUCTOR_INGREDIENT} from '../../services/constants/constructor';
 import {handleAddOrder} from '../../services/actions/order';
 import {useDrop} from 'react-dnd';
-import {TConstructorIngredient, TIngredient} from '../../services/types';
-
-type IConstructor = {
-    constructorIngredients: TConstructorIngredient[];
-    constructorBun: TIngredient;
-}
+import {TIngredient} from '../../services/types';
 
 const BurgerConstructor: FC = () => {
     const history = useHistory();
@@ -21,7 +16,7 @@ const BurgerConstructor: FC = () => {
     const {
         constructorIngredients,
         constructorBun,
-    }: IConstructor = useSelector((state) => state.constructor);
+    } = useSelector((state) => state.constructor);
     
     const {orderRequest} = useSelector((state) => state.order);
     const [, dropTarget] = useDrop({
@@ -36,12 +31,14 @@ const BurgerConstructor: FC = () => {
     });
 
     const idForOrder = () => {
-        const fullList = [...constructorIngredients, constructorBun];
-        return fullList && fullList.map((item: TIngredient) => item._id);
+        if(constructorBun !== null) {
+            const fullList = [...constructorIngredients, constructorBun];
+            return fullList && fullList.map((item: TIngredient ) => item._id);
+        }
     };
     const calculate = (
         constructorIngredients: Array<TIngredient>,
-        constructorBun: TIngredient
+        constructorBun: TIngredient | null
     ) => {
         if (constructorIngredients && constructorBun) {
             return constructorIngredients.reduce(
