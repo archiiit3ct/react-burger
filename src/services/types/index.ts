@@ -38,6 +38,8 @@ export type TIngredient = {
     __v: number;
 }
 
+export type TConstructorIngredient = TIngredient & { key: number };
+
 type TApplicationActions =
     TAuthAction
     | TConstructorAction

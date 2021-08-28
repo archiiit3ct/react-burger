@@ -5,10 +5,10 @@ import {
   TConstructorAction
 } from '../actions/constructor';
 import {ADD_ORDER_SUCCESS} from '../actions/order';
-import {TIngredient} from '../types';
+import {TConstructorIngredient, TIngredient} from '../types';
 
 type TConstructorState = {
-    constructorIngredients: Array<TIngredient & { key: number }>,
+    constructorIngredients: TConstructorIngredient[],
     constructorBun: TIngredient | {},
 };
 

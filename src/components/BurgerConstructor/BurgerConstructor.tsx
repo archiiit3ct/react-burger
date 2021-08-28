@@ -7,10 +7,10 @@ import {useDispatch, useSelector} from '../../services/hooks';
 import {ADD_CONSTRUCTOR_INGREDIENT} from '../../services/constants/constructor';
 import {handleAddOrder} from '../../services/actions/order';
 import {useDrop} from 'react-dnd';
-import {TIngredient} from '../../services/types';
+import {TConstructorIngredient, TIngredient} from '../../services/types';
 
 type IConstructor = {
-    constructorIngredients: Array<TIngredient & { key: number }>;
+    constructorIngredients: TConstructorIngredient[];
     constructorBun: TIngredient;
 }
 

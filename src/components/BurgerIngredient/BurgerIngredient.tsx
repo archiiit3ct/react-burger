@@ -1,6 +1,6 @@
 import {FC, useMemo} from 'react';
 import style from './BurgerIngredient.module.scss';
-import {TIngredient} from '../../services/types';
+import {TIngredient, TConstructorIngredient} from '../../services/types';
 import {Counter, CurrencyIcon,} from '@ya.praktikum/react-developer-burger-ui-components';
 import {useSelector} from '../../services/hooks';
 import {useDrag} from 'react-dnd';
@@ -11,7 +11,7 @@ interface IBurgerIngredient {
 }
 
 type IIngredient = {
-    constructorIngredients: Array<TIngredient & { key: number }>;
+    constructorIngredients: TConstructorIngredient[];
     constructorBun: TIngredient;
 }
 
