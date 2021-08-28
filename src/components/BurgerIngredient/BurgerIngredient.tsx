@@ -10,12 +10,14 @@ interface IBurgerIngredient {
     ingredient: TIngredient;
 }
 
+type IIngredient = {
+    constructorIngredients: Array<TIngredient & { key: number }>;
+    constructorBun: TIngredient;
+}
+
 const BurgerIngredient: FC<IBurgerIngredient> = ({ingredient}) => {
     const location = useLocation();
-    const { constructorIngredients, constructorBun } : {
-        constructorIngredients: Array<TIngredient & { key: number }>;
-        constructorBun: TIngredient;
-    } = useSelector((state) => state.constructor);
+    const { constructorIngredients, constructorBun } : IIngredient = useSelector((state) => state.constructor);
     const [, dragRef] = useDrag({
         type: 'Ingredient',
         item: {ingredient},

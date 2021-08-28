@@ -9,6 +9,11 @@ import {handleAddOrder} from '../../services/actions/order';
 import {useDrop} from 'react-dnd';
 import {TIngredient} from '../../services/types';
 
+type IConstructor = {
+    constructorIngredients: Array<TIngredient & { key: number }>;
+    constructorBun: TIngredient;
+}
+
 const BurgerConstructor: FC = () => {
     const history = useHistory();
     const dispatch = useDispatch();
@@ -16,10 +21,8 @@ const BurgerConstructor: FC = () => {
     const {
         constructorIngredients,
         constructorBun,
-    }: {
-        constructorIngredients: Array<TIngredient & { key: number }>;
-        constructorBun: TIngredient;
-    } = useSelector((state) => state.constructor);
+    }: IConstructor = useSelector((state) => state.constructor);
+    
     const {orderRequest} = useSelector((state) => state.order);
     const [, dropTarget] = useDrop({
         accept: 'Ingredient',
