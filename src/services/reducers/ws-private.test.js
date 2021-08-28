@@ -3,7 +3,7 @@ import {
 	WS_CONNECTION_PRIVATE_ERROR,
 	WS_CONNECTION_PRIVATE_SUCCESS,
 	WS_GET_MESSAGE_PRIVATE,
-} from '../actions/ws-private';
+} from '../constants/ws-private';
 import {initialState, wsReducerPrivate} from './ws-private';
 
 describe('ws reducer', () => {
@@ -57,8 +57,12 @@ describe('ws reducer', () => {
 	it('return initial state', () => {
 		expect(wsReducerPrivate(initialState, {})).toEqual({
 			wsConnected: false,
-			error: null,
-			messages: [],
+			error: false,
+			messages: {
+				orders: [],
+				total: 0,
+				totalToday: 0
+			},
 		});
 	});
 });

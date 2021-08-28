@@ -23,7 +23,7 @@ import {
 	USER_ERROR,
 	USER_REQUEST,
 	USER_SUCCESS,
-} from '../actions/auth';
+} from '../constants/auth';
 import {authReducer, initialState} from './auth';
 
 describe('authorization reducer', () => {

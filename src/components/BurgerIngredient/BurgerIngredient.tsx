@@ -12,10 +12,7 @@ interface IBurgerIngredient {
 
 const BurgerIngredient: FC<IBurgerIngredient> = ({ingredient}) => {
     const location = useLocation();
-    const {
-        constructorIngredients,
-        constructorBun,
-    }: {
+    const { constructorIngredients, constructorBun } : {
         constructorIngredients: Array<TIngredient & { key: number }>;
         constructorBun: TIngredient;
     } = useSelector((state) => state.constructor);

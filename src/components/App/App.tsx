@@ -1,11 +1,11 @@
-import {useEffect} from 'react';
+import {FC, useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch, useHistory, useLocation,} from 'react-router-dom';
 import style from './App.module.scss';
 import AppHeader from '../AppHeader/AppHeader';
 import IngredientDetails from '../IngredientDetails/IngredientDetails';
 import NotFound404Page from "../../pages/not-found-404-page/nof-found-404-page";
 import {ProtectedRouteAuth, ProtectedRouteUnAuth,} from '../ProtectedRoute/ProtectedRoute';
-import Modal from "../modal/Modal";
+import Modal from "../Modal/Modal";
 import {
   FeedPage,
   ForgotPage,
@@ -22,7 +22,7 @@ import {getIngredients} from '../../services/actions/ingredients';
 import Loader from '../Loader/Loader';
 import {refresh} from '../../services/actions/auth';
 
-const App = () => {
+const App: FC = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getIngredients());

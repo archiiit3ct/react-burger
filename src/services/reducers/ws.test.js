@@ -1,4 +1,4 @@
-import {WS_CONNECTION_CLOSED, WS_CONNECTION_ERROR, WS_CONNECTION_SUCCESS, WS_GET_MESSAGE,} from '../actions/ws';
+import {WS_CONNECTION_CLOSED, WS_CONNECTION_ERROR, WS_CONNECTION_SUCCESS, WS_GET_MESSAGE,} from '../constants/ws';
 import {initialState, wsReducer} from './ws';
 
 describe('ws reducer', () => {
@@ -48,7 +48,12 @@ describe('ws reducer', () => {
 	it('return initial state', () => {
 		expect(wsReducer(initialState, {})).toEqual({
 			wsConnected: false,
-			messages: [],
+			error: false,
+			messages: {
+				orders: [],
+				total: 0,
+				totalToday: 0
+			},
 		});
 	});
 });

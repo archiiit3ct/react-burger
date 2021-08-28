@@ -1,4 +1,4 @@
-import {useMemo} from 'react';
+import {FC, useMemo} from 'react';
 import {useHistory} from 'react-router-dom';
 import {Button, ConstructorElement, CurrencyIcon,} from '@ya.praktikum/react-developer-burger-ui-components';
 import ConstructorIngredient from '../ConstructorIngredient/ConstructorIngredient';
@@ -9,7 +9,7 @@ import {handleAddOrder} from '../../services/actions/order';
 import {useDrop} from 'react-dnd';
 import {TIngredient} from '../../services/types';
 
-const BurgerConstructor = () => {
+const BurgerConstructor: FC = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const hasToken = localStorage.getItem('refreshToken');

@@ -1,6 +1,6 @@
 import BurgerIngredients from '../../components/BurgerIngredients/BurgerIngredients';
 import BurgerConstructor from '../../components/BurgerConstructor/BurgerConstructor';
-import Modal from '../../components/modal/Modal';
+import Modal from '../../components/Modal/Modal';
 import OrderDetails from '../../components/OrderDetails/OrderDetails';
 import {useSelector} from '../../services/hooks';
 import {DndProvider} from 'react-dnd';
