@@ -1,40 +1,67 @@
-.main {
-  max-width: 600px;
-  width: 100%;
-  margin: 100px 0 0 40px;
-}
-
-.container {
+.burgerConstructor {
+  flex-basis: 600px;
+  padding-top: 100px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  height: 350px;
+}
+
+.bun {
+  margin-left: 24px;
+}
+
+.dopElement {
+  max-height: calc(100vh - 520px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   overflow-y: auto;
-  margin: 10px 0;
+  min-height: 75px;
 
   &::-webkit-scrollbar {
     width: 8px;
   }
 
   &::-webkit-scrollbar-track {
-    background-color: #2F2F37;
+    background: #2f2f37;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #8585AD;
-    outline: 1px solid #8585AD;
+    background: #8585ad;
   }
 }
 
-.edgeElement {
-  max-width: 516px;
-  margin-left: 37px;
+.finalPrice {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 488px;
+  margin-top: 40px;
+}
 
-  &:hover {
-    cursor: pointer;
+.price {
+  display: flex;
+  margin-right: 40px;
+
+  svg {
+    width: 36px;
+    height: 36px;
   }
 }
 
+:global(.constructor-element) {
+  flex-basis: 100%;
+  max-width: 100%;
+  margin-right: 10px;
+}
+
+:global(.constructor-element__row) {
+  justify-content: space-between;
+}
+
+:global(.constructor-element__text) {
+  flex-grow: 1;
+}
 
 .emptyConstructor {
   margin-top: 50px;
@@ -47,4 +74,3 @@
     background-color: #1C1C21;
   }
 }
-

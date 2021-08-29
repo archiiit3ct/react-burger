@@ -1,0 +1,43 @@
+.container {
+  width: 640px;
+  margin: 0 auto 0;
+}
+
+.id {
+  text-align: left;
+}
+
+.status {
+  color: var(--colors-interface-success);
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  height: 260px;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #2f2f37;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #8585ad;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+}

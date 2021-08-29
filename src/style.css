@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
